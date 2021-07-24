@@ -76,9 +76,32 @@ main header .author::after {
     content: "</author>";
     font-weight: bold;
 }
+/* code markers */
 mark.highlight-line-active {
     background-color: #731a3b;
     color: inherit;
+}
+ins.highlight-line-add {
+    text-decoration: none;
+    background: green;
+    position: relative;
+}
+ins.highlight-line-add::before, del.highlight-line-remove::before {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    line-height: 1em;
+}
+ins.highlight-line-add::before {
+    content: "+";
+}
+del.highlight-line-remove::before {
+    content: "-";
+}
+del.highlight-line-remove {
+    background: red;
+    text-decoration: none;
+    position: relative;
 }
 footer p::before,
 main header h2::before,
