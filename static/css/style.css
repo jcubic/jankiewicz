@@ -21,6 +21,13 @@ nav.main .bottom {
     position: fixed;
     top: calc(20px + 1em);
     right: 10px;
+    background: var(--background);
+    padding: 5px 0 5px 5px;
+    margin-top: -5px;
+}
+}
+nav.main .bottom a {
+    padding: 5px;
 }
 .brakets::before {
     content: "[ ";
@@ -269,14 +276,15 @@ body.matrix {
     font-family: monospace;
     font-size: 14px;
 }
-.system a {
+#pi {
     position: fixed;
     bottom: 0;
     right: 0;
     padding: 10px;
 }
-.system a, .system a:visited, .system a:hover {
+#pi, #pi:visited, #pi:hover {
     color: var(--color);
+    background: var(--background);
     text-decoration: none;
     font-family: serif;
 }
