@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <nav class="main">
+    <pre></pre>
+    <div class="dark-mode radio">
+        <input name="mode" type="radio" id="mode_light" value="light" checked/>
+        <label for="mode_light">
+            light
+        </label>
+        <input name="mode" type="radio" id="mode_dark" value="dark"/>
+        <label for="mode_dark">
+            dark
+        </label>
+    </div>
+  </nav>
+  <a href="/rss.xml" class="rss">[ RSS ]</a>
+  <header class="top">
+    <pre class="big" aria-hidden="true" role="presentation">{{- figlet.big -}}</pre>
+    <pre class="small" aria-hidden="true" role="presentation">{{- figlet.small -}}</pre>
+    <pre class="wrap" aria-hidden="true" role="presentation">{{- figlet.wrap -}}</pre>
+  </header>
+ <main>
+   <header>
+     <h1>
+       {{ title }}
+     </h1>
+     <div class="meta">
+       {% assign user = author | default: "jcubic" %}
+       <p class="author">
+         <a href="{{ users[user].url }}">
+           {{- users[user].name -}}
+         </a>
+       </p>
+     </div>
+   </header>
+   <section>
+     {{ content }}
+   </section>
+ </main>
+ <footer>
+   <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a></p>
+ </footer>
+ <div class="cookies" id="cookie_baner" style="display: none">
+   <p>Ta strona używa ciasteczek w celach statystycznych <a href="/cookies.html">Czytaj Więcej ...</a> <button id="cookie_ok" class="btn">Rozumiem</button></p>
+ </div>
+ <script src="/js/script.js"></script>
+</body>
+</html>

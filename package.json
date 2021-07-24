@@ -1,0 +1,16 @@
+{
+  "name": "repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jakub T. Jankiewicz <jcubic@onet.pl> (https://jcubic.pl/jakub-jankiewicz/)",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
+    "figlet": "^1.5.0"
+  }
+}
