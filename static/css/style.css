@@ -76,6 +76,10 @@ main header .author::after {
     content: "</author>";
     font-weight: bold;
 }
+mark.highlight-line-active {
+    background-color: #731a3b;
+    color: inherit;
+}
 footer p::before,
 main header h2::before,
 main header h3::before {
