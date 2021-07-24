@@ -5,8 +5,8 @@ description: Mój pierwszy wpis na blogu jakub.jankiewicz.org
 
 Treścią tego bloga będzie wszystko co mnie interesuje.  Jestem głównie
 programistą. Mam [kilka projektów Open Source](https://github.com/jcubic).
-Jestem także Edytorem polskiej Wikipedii, zajmuję się fotografią i projektuje
-logotypy (ale nie zarobkowo). Interesuję się Matematyką, grafiką komputerową,
+Jestem także edytorem polskiej Wikipedii, zajmuję się fotografią i projektuje
+logotypy (ale nie zarobkowo). Interesuję się matematyką, grafiką komputerową,
 komiksami (w tym mangą oraz anime). Wiele rzeczy będzie na tematy, które nie
 pasują do mojego bloga ["Głównie JavaScript"](https://jcubic.pl).
 
