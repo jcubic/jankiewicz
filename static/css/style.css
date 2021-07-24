@@ -44,7 +44,7 @@ pre {
     margin: 0;
 }
 main p {
-    line-height: 1.5em;
+    line-height: 1.7em;
 }
 main, footer {
     font-size: 14px;
@@ -235,8 +235,48 @@ footer p, .cookies p {
 .cookies p::before {
     content: "| ";
 }
-
 .cookies p::after {
     content: " |";
     float: right;
+}
+/* easter egg */
+body.matrix {
+    overflow: hidden;
+}
+.system canvas {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+    background: black;
+}
+.system canvas.running {
+    display: block;
+    z-index: 100;
+}
+.system .off-site {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+.system .font {
+    font-family: monospace;
+    font-size: 14px;
+}
+.system a {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+.system a, .system a:visited, .system a:hover {
+    color: var(--color);
+    text-decoration: none;
+    font-family: serif;
 }

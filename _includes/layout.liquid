@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="{{ lang }}">
 <head>
   <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}"/>
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css"/>
 </head>
@@ -48,9 +49,17 @@
  <footer>
    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a></p>
  </footer>
+ <div class="system">
+   <a href="#" id="pi">Π</a>
+   <canvas id="m"></canvas>
+   <div class="off-site">
+     <span class="font">m</span>
+   </div>
+ </div>
  <div class="cookies" id="cookie_baner" style="display: none">
-   <p>Ta strona używa ciasteczek w celach statystycznych <a href="/cookies.html">Czytaj Więcej ...</a> <button id="cookie_ok" class="btn">Rozumiem</button></p>
+   <p>{{ cookie.pre }} <a href="/cookies.html">{{ cookie.more }}</a> <button id="cookie_ok" class="btn">{{ cookie.ok }}</button></p>
  </div>
  <script src="/js/script.js"></script>
+ <script defer async src="https://terminal.jcubic.pl/js/matrix.js"></script>
 </body>
 </html>

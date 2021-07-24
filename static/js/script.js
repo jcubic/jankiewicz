@@ -24,6 +24,15 @@ cookie_ok.addEventListener('click', function() {
     cookie_consent = true;
     display_baner('none');
 });
+pi.addEventListener('click', function(e) {
+    if (e.ctrlKey && e.shiftKey) {
+        matrix(m).then(() => {
+            document.body.classList.remove('matrix');
+        });
+        document.body.classList.add('matrix');
+    }
+    e.preventDefault();
+});
 
 resize();
 render_progress();
