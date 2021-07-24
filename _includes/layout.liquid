@@ -2,20 +2,21 @@
 <html lang="pl">
 <head>
   <title>{{ title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
   <nav class="main">
     <pre></pre>
     <div class="dark-mode radio">
-        <input name="mode" type="radio" id="mode_light" value="light" checked/>
-        <label for="mode_light">
-            light
-        </label>
-        <input name="mode" type="radio" id="mode_dark" value="dark"/>
-        <label for="mode_dark">
-            dark
-        </label>
+      <input name="mode" type="radio" id="mode_light" value="light" checked/>
+      <label for="mode_light">
+        light
+      </label>
+      <input name="mode" type="radio" id="mode_dark" value="dark"/>
+      <label for="mode_dark">
+        dark
+      </label>
     </div>
   </nav>
   <a href="/rss.xml" class="rss">[ RSS ]</a>
@@ -24,7 +25,7 @@
     <pre class="small" aria-hidden="true" role="presentation">{{- figlet.small -}}</pre>
     <pre class="wrap" aria-hidden="true" role="presentation">{{- figlet.wrap -}}</pre>
   </header>
- <main>
+  <main>
    <header>
      <h1>
        {{ title }}
@@ -41,7 +42,7 @@
    <section>
      {{ content }}
    </section>
- </main>
+  </main>
  <footer>
    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a></p>
  </footer>
