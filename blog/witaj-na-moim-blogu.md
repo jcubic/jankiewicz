@@ -29,3 +29,5 @@ jest na pierwszym miejscu, więc oczywiście podziękowałem im. Dodam że zada�
 takie samo pytanie na grupie SEO na Facebooku i dostałem zgoła inną odpowiedź.
 Było nią zależy jaki mam budżet. Więc domyślam się że da się to zrobić.
 Zobaczymy jak mi pójdzie.
+
+{% include abbr %}

@@ -76,6 +76,9 @@ main header .author::after {
     content: "</author>";
     font-weight: bold;
 }
+abbr, acronym {
+    cursor: help;
+}
 /* code markers */
 mark.highlight-line-active {
     background-color: #731a3b;
