@@ -10,25 +10,25 @@ logotypy (ale nie zarobkowo). Interesuję się Matematyką, grafiką komputerow�
 komiksami (w tym mangą oraz anime). Wiele rzeczy będzie na tematy, które nie
 pasują do mojego bloga ["Głównie JavaScript"](https://jcubic.pl).
 
-Powodem dla którego postanowiłem założyć tego bloga jest moja marka osobista,
-nad którą chciałem popracować. Chciałem coś mieć co łatwo jest utożsamić z moim
+Powodem dla którego postanowiłem założyć tego bloga, jest moja marka osobista,
+nad którą chciałem popracować. Chciałem mieć coś co łatwo jest utożsamić z moim
 imieniem i nazwiskiem. Chciałem też trochę popracować na SEO dla mojego imienia
 i nazwisko. O ile jest informacja o mnie wpisując w Google "Jakub T. Jankiewicz"
 to nie ma nic o mnie wpisując "Jakub Jankiewicz" (przynajmniej szukając w języku
 polskim).  Jakiś czas temu, gdy to drugie hasło zostało skanibalizowane przez
-mojego imiennika, postanowiłem dodać do imienia T. od drugiego imienia, aby się
+mojego imiennika, postanowiłem dodać do nazwiska "T." od drugiego imienia, aby się
 wyróżnić. Teraz moim celem jest pojawienie się na pierwszej stronie Google, dla
 hasła "Jakub Jankiewicz". Zobaczymy jak pójdzie. Możecie być pewni, że gdy
 osiągnę jakieś sukcesy opiszę to na blogu.
 
-Muszę jeszcze dodać że jakiś czas temu dostałem reklamę firmy SEO, co już
+Muszę jeszcze dodać, że jakiś czas temu dostałem reklamę firmy SEO, co już
 powinno być alarmujące, ponieważ firma SEO raczej nie musi się reklamować.  I
 zapytałem ich czy są w stanie wypozycjonować moją stronę na hasło "Jakub
 Jankiewicz" odpowiedzieli że się nie da i że mogą wypozycjonować na hasło "Jakub
 Jankiewicz blog" gdzie mój drugi blog "Głównie JavaScript" jest na pierwszym
 miejscu, więc oczywiście podziękowałem im. Dodam że zadałem takie samo pytanie
-na grupie SEO na Facebooku i dostałem zgoła inną odpowiedź.  Było nią zależy
-jaki mam budżet. Więc domyślam się że da się to zrobić.  Zobaczymy jak mi
+na grupie SEO na Facebooku i dostałem zgoła inną odpowiedź.  Było nią "zależy
+jaki mam budżet". Więc domyślam się, że da się to zrobić.  Zobaczymy jak mi
 pójdzie.
 
 {% include abbr %}
