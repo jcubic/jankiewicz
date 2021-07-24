@@ -47,8 +47,8 @@ main p {
     line-height: 1.7em;
 }
 main, footer {
-    font-size: 14px;
-    max-width: 900px;
+    font-size: 18px;
+    max-width: 800px;
     margin: auto;
 }
 main header {
