@@ -11,7 +11,7 @@ $('.dark-mode').on('change', function(e) {
 
 let cols;
 const COL_MARGIN = 30;
-const char = char_size();
+let char = char_size();
 let cookie_consent = !!localStorage.getItem('cookie');
 const [progress] = $('nav.main pre');
 if (!cookie_consent) {
@@ -43,6 +43,7 @@ function render_progress() {
 }
 
 function resize() {
+    char = char_size();
     if (!cookie_consent) {
         cookie_resize();
     }
@@ -56,9 +57,11 @@ function display_baner(value) {
 }
 
 function cookie_resize() {
+    cookie_baner.style.right = 0;
     const cols = get_col_size(cookie_baner) - 2;
     const line = '+' + '-'.repeat(cols) + '+';
     cookie_baner.dataset.line = line;
+    cookie_baner.style.removeProperty('right');
 }
 
 

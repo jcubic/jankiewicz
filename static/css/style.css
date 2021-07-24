@@ -52,9 +52,13 @@ pre {
 }
 main p {
     line-height: 1.7em;
+    margin-block-start: 2em;
+    margin-block-end: 2em;
+}
+main, footer, .cookies, nav.main {
+    font-size: 18px;
 }
 main, footer {
-    font-size: 18px;
     max-width: 800px;
     margin: auto;
 }
@@ -150,14 +154,23 @@ header.top > pre {
         display: block;
     }
 }
-
 @media only screen and (max-width: 640px) {
     header.top .small {
         display: block;
     }
 }
-
-
+@media only screen and (max-width: 800px) {
+    .cookies, nav.main {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 510px) {
+    main header .author::after {
+        display: block;
+        content: "// :: </author>";
+        font-weight: bold;
+    }
+}
 @media only screen and (max-width: 320px) {
     header.top {
         display: none;
@@ -220,7 +233,9 @@ footer p, .cookies p {
     position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
+}
+.cookies .btn {
+    padding: 2px 0;
 }
 .btn:hover {
     color: #FF9100;
