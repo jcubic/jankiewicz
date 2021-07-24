@@ -17,10 +17,15 @@ nav.main {
 nav.main pre {
     flex-grow: 1;
 }
-.dark-mode::before {
+nav.main .bottom {
+    position: fixed;
+    top: calc(20px + 1em);
+    right: 10px;
+}
+.brakets::before {
     content: "[ ";
 }
-.dark-mode::after {
+.brakets::after {
     content: " ]";
 }
 .dark-mode input {
