@@ -25,17 +25,132 @@ cookie_ok.addEventListener('click', function() {
     display_baner('none');
 });
 pi.addEventListener('click', function(e) {
+    e.preventDefault();
     if (e.ctrlKey && e.shiftKey) {
-        matrix(m).then(() => {
+        matrix(m, { font_size: 20 }).then(() => {
             document.body.classList.remove('matrix');
+        });
+        if (!window.jQuery || !window.jQuery.terminal) {
+            const head = document.querySelector('head');
+            [
+                'https://cdn.jsdelivr.net/npm/jquery',
+                'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/js/jquery.terminal.js'
+            ].forEach(script => {
+                new_script(head, script);
+            });
+            new_style(head, 'https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css');
+        }
+        when_ready(function() {
+            var animation;
+            var term = $('.system .body').terminal(function() {
+                
+            }, {
+                greetings: '',
+                keydown: function() {
+                    if (animation) {
+                        return false;
+                    }
+                },
+                prompt: '# ',
+                onBlur: function() {
+                    return false;
+                }
+            });
+            $('.system .trinity-dialog').removeClass('hidden');
+            ssh_hack(term);
+
+            async function ssh_hack(term) {
+                animation = true;
+                // hacking sequence from Matrix Reloaded
+                term.clear().echo([
+                    '# nmap -v -sS -O 10.2.2.2',
+                    '',
+                    'Starting nmap V. 2.54BETA25',
+                    'Insufficient responses for TCP sequencing (3). OS detection may be less',
+                    'accurate',
+                    'Interesting ports on 10.2.2.2:',
+                    '(The 1539 ports scanned but not shown below are in state: closed)',
+                    'Port\t\tState\t\tService\n22/tcp\t\topen\t\tssh',
+                    '',
+                    'No exact OS matches for host',
+                    '',
+                    'Nmap run completed -- 1 IP address (1 host up) scanneds'
+                ].join('\n'));
+                await term.typing('enter', 100, 'sshnuke 10.2.2.2 -rootpw="Z10N0101"');
+                term.set_prompt('');
+                async function step(msg) {
+                    msg = `${msg} ...`;
+                    term.echo(msg);
+                    var id = term.last_index();
+                    await delay(1000);
+                    msg += ' successful.';
+                    term.update(-1, msg);
+                }
+                await step('Connecting to 10.2.2.2:ssh');
+                await step('Attempting to exploit SSHv1 CRC32');
+                term.echo('Reset root password to "Z10N0101".');
+                await delay(400);
+                term.echo('System open: Access level <9>');
+                term.set_prompt('# ');
+                await delay(400);
+                await term.typing('enter', 100, 'ssh 10.2.2.2 -l root');
+                term.set_prompt('root@10.2.2.2\'s password: ');
+                await delay(1000);
+                term.set_prompt('RRF-CONTROL> ').echo('root@10.2.2.2\'s password: \n');
+                await delay(500);
+                await term.typing('enter', 100, 'disable grid nodes 21 - 48');
+                term.echo('[[;#fff;]Warning: Disabling nodes 21-48 will disconnect sector 11 (27 nodes)]');
+                term.set_prompt('');
+                term.echo('         [[;#fff;]ARE YOU SURE? (y/n)]');
+                await delay(1000);
+                term.update(-1, '         [[;#fff;]ARE YOU SURE? (y/n) y]');
+                await delay(200);
+                for (let i = 21; i <= 48; i++) {
+                    term.echo(`Grid Node ${i} offline...`);
+                    await delay(200);
+                }
+                term.echo('\nConnection to 10.2.2.2 closed.');
+                term.set_prompt('# ');
+                animation = false;
+            }
         });
         document.body.classList.add('matrix');
     }
-    e.preventDefault();
+    
 });
 
 resize();
 render_progress();
+
+
+function new_style(head, href) {
+    var style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = href;
+    head.appendChild(style);
+}
+
+function new_script(head, src) {
+    const script = document.createElement('script');
+    script.src = src;
+    head.appendChild(script);
+}
+
+function when_ready(fn) {
+    (function recur() {
+        if (typeof jQuery !== 'undefined' && jQuery.terminal) {
+            fn();
+        } else {
+            setTimeout(recur, 200);
+        }
+    })();
+}
+
+function delay(timeout) {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeout);
+    });
+}
 
 function render_progress() {
     const percent = get_scroll_progress(document.body);
