@@ -4,6 +4,9 @@ if (prefered_dark()) {
 }
 
 $('.dark-mode').on('change', function(e) {
+    if ('vibrate' in window.navigator) {
+        window.navigator.vibrate(100);
+    }
     var dark = e.target.value === 'dark';
     dark_mode(dark);
     save_dark_mode(dark);
