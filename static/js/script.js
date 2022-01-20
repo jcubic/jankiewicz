@@ -102,11 +102,13 @@ pi.addEventListener('click', function(e) {
                 term.set_prompt('RRF-CONTROL> ').echo('root@10.2.2.2\'s password: \n');
                 await delay(500);
                 await term.typing('enter', 100, 'disable grid nodes 21 - 48');
+                term.echo('');
                 term.echo('[[;#fff;]Warning: Disabling nodes 21-48 will disconnect sector 11 (27 nodes)]');
                 term.set_prompt('');
                 term.echo('         [[;#fff;]ARE YOU SURE? (y/n)]');
                 await delay(1000);
-                term.update(-1, '         [[;#fff;]ARE YOU SURE? (y/n) y]');
+                term.update(-1, '         [[;#fff;]ARE YOU SURE? (y/n)] y');
+                term.echo('');
                 await delay(200);
                 for (let i = 21; i <= 48; i++) {
                     term.echo(`Grid Node ${i} offline...`);
@@ -119,7 +121,6 @@ pi.addEventListener('click', function(e) {
         });
         document.body.classList.add('matrix');
     }
-    
 });
 
 resize();
