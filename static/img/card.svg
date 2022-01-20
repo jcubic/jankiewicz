@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="298.45001mm" height="158.75mm" viewBox="0 0 298.45001 158.75" version="1.1" id="svg5" inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)" sodipodi:docname="card.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.64052329" inkscape:cx="657.27509" inkscape:cy="358.30079" inkscape:window-width="1920" inkscape:window-height="988" inkscape:window-x="0" inkscape:window-y="37" inkscape:window-maximized="1" inkscape:current-layer="layer1" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0" />
+  <defs id="defs2">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath940">
+      <circle style="fill:#000000;fill-rule:evenodd;stroke-width:0.13734;stop-color:#000000" id="circle942" cx="6.196106" cy="125.16134" r="8.4665003" />
+    </clipPath>
+  </defs>
+  <g inkscape:label="Warstwa 1" inkscape:groupmode="layer" id="layer1" transform="translate(316.15063,1.2506216)">
+    <rect style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.26458333;stroke-opacity:1;stop-color:#000000;stroke-miterlimit:4;stroke-dasharray:none" id="rect28786" width="297.85968" height="158.15968" x="-315.85547" y="-0.95545959" rx="0" ry="0" />
+    <rect style="fill:#02000b;fill-opacity:1;fill-rule:evenodd;stroke-width:0.298417;stop-color:#000000" id="rect966" width="271.60532" height="131.11079" x="-302.72827" y="12.568985" rx="7.4956741" ry="7.4956741" />
+    <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12351px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:0.25441" x="-264.30206" y="127.80488" id="text2551"><tspan sodipodi:role="line" id="tspan2549" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New';fill:#ffffff;fill-opacity:1;stroke-width:0.25441" x="-264.30206" y="127.80488">Jakub T. Jankiewicz • Jan 20</tspan></text>
+    <image width="16.933332" height="16.933332" preserveAspectRatio="none" xlink:href="./avatar.jpg" id="image832" x="-2.2705605" y="116.69467" clip-path="url(#clipPath940)" transform="matrix(1.3843576,0,0,1.3843576,-289.53814,-47.661445)" />
+    <circle style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.26458333;stroke-opacity:1;stop-color:#000000;stroke-miterlimit:4;stroke-dasharray:none" id="circle1050" cx="-280.96051" cy="125.60661" r="11.720664" />
+    <text xml:space="preserve" style="font-size:17.5478px;line-height:1.25;font-family:monospace;-inkscape-font-specification:monospace;letter-spacing:0px;word-spacing:0px;fill:#ffffff;stroke-width:0.626707" x="-290.90491" y="46.718307" id="text12841"><tspan sodipodi:role="line" id="tspan12839" style="fill:#ffffff;stroke-width:0.626707" x="-290.90491" y="46.718307">Welcome to my new</tspan><tspan sodipodi:role="line" style="fill:#ffffff;stroke-width:0.626707" x="-290.90491" y="68.653061" id="tspan15397">Eleventy blog</tspan></text>
+  </g>
+</svg>
