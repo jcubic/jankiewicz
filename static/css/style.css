@@ -326,6 +326,7 @@ body.matrix {
 .trinity-dialog .body {
     width: 100%;
     height: calc(100% - 28px);
+    scroll-behavior: smooth;
 }
 .trinity-dialog, .trinity-dialog header .title {
     left: 50%;

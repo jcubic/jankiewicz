@@ -3,7 +3,7 @@ if (prefered_dark()) {
     dark_mode(true);
 }
 
-$('.dark-mode').on('change', function(e) {
+$$('.dark-mode').on('change', function(e) {
     if ('vibrate' in window.navigator) {
         window.navigator.vibrate(100);
     }
@@ -16,7 +16,7 @@ let cols;
 const COL_MARGIN = 30;
 let char = char_size();
 let cookie_consent = !!localStorage.getItem('cookie');
-const [progress] = $('nav.main pre');
+const [progress] = $$('nav.main pre');
 if (!cookie_consent) {
     display_baner('');
 }
@@ -35,15 +35,15 @@ pi.addEventListener('click', function(e) {
         });
         if (!window.jQuery || !window.jQuery.terminal) {
             const head = document.querySelector('head');
-            [
-                'https://cdn.jsdelivr.net/npm/jquery',
-                'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/js/jquery.terminal.js'
-            ].forEach(script => {
-                new_script(head, script);
+            new_script(head, 'https://cdn.jsdelivr.net/npm/jquery');
+            wait(function() {
+                return typeof jQuery !== 'undefined';
+            }).then(function() {
+                new_script(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/js/jquery.terminal.js');
             });
             new_style(head, 'https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css');
         }
-        when_ready(function() {
+        when_ready(function($) {
             var animation;
             var term = $('.system .body').terminal(function() {
                 
@@ -140,14 +140,24 @@ function new_script(head, src) {
     head.appendChild(script);
 }
 
+function wait(test) {
+    return new Promise(function(resolve) {
+        (function recur() {
+            if (test()) {
+                resolve();
+            } else {
+                setTimeout(recur, 100);
+            }
+        })();
+    });
+}
+
 function when_ready(fn) {
-    (function recur() {
-        if (typeof jQuery !== 'undefined' && jQuery.terminal) {
-            fn();
-        } else {
-            setTimeout(recur, 200);
-        }
-    })();
+    wait(function() {
+        return typeof jQuery !== 'undefined' && jQuery.terminal;
+    }).then(function() {
+        fn(jQuery.noConflict(true));
+    });
 }
 
 function delay(timeout) {
@@ -204,7 +214,7 @@ function save_dark_mode(mode) {
     localStorage.setItem('dark-mode', mode);
 }
 
-function $(selector) {
+function $$(selector) {
     var data = document.querySelectorAll(selector);
     var result = Array.from(data);
     result.on = function(event, callback) {
@@ -218,7 +228,7 @@ function $(selector) {
 function char_size() {
     const span = document.createElement('span');
     span.innerHTML = '&nbsp;';
-    $('nav.main')[0].appendChild(span);
+    $$('nav.main')[0].appendChild(span);
     var rect = span.getBoundingClientRect();
     span.remove();
     return rect;
