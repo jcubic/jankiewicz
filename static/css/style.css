@@ -144,6 +144,9 @@ header.top > pre {
     display: none;
     user-select: none;
 }
+main header h1 {
+    --indent: 4ch;
+}
 @media only screen and (min-width: 1150px) {
     header.top .big {
         display: block;
@@ -157,6 +160,17 @@ header.top > pre {
 @media only screen and (max-width: 640px) {
     header.top .small {
         display: block;
+    }
+    main header h1 {
+        display: flex;
+        flex-direction: column;
+        padding-left: calc(var(--indent) + 6ch);
+    }
+    main header h1::before {
+        text-indent: calc((var(--indent) + 6ch) * -1);
+    }
+    main header h1::after {
+        text-indent: calc(var(--indent) * -1);
     }
 }
 @media only screen and (max-width: 800px) {
