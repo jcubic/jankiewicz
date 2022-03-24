@@ -39,9 +39,9 @@ pi.addEventListener('click', function(e) {
             wait(function() {
                 return typeof jQuery !== 'undefined';
             }).then(function() {
-                new_script(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@devel/js/jquery.terminal.js');
+                new_script(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@nocache=2/js/jquery.terminal.js');
             });
-            new_style(head, 'https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css');
+            new_style(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@nocache=2/css/jquery.terminal.min.css');
         }
         when_ready(function($) {
             var animation;
@@ -53,6 +53,9 @@ pi.addEventListener('click', function(e) {
                     if (animation) {
                         return false;
                     }
+                },
+                mousewheel: function() {
+                    return true; // fix slow scrolling
                 },
                 prompt: '# ',
                 onBlur: function() {
