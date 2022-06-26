@@ -29,10 +29,21 @@ cookie_ok.addEventListener('click', function() {
 });
 pi.addEventListener('click', function(e) {
     e.preventDefault();
+    var trinity_dialog;
+    var term;
+    function exit() {
+        document.body.classList.remove('matrix');
+        if (trinity_dialog) {
+            trinity_dialog.addClass('hidden');
+        }
+        if (term) {
+            term.destroy();
+            term = null;
+        }
+    }
     if (e.ctrlKey && e.shiftKey) {
-        matrix(m, { font_size: 20 }).then(() => {
-            document.body.classList.remove('matrix');
-        });
+        // https://tinyurl.com/the-net
+        matrix(m, { font_size: 20 });
         if (!window.jQuery || !window.jQuery.terminal) {
             const head = document.querySelector('head');
             new_script(head, 'https://cdn.jsdelivr.net/npm/jquery');
@@ -45,11 +56,12 @@ pi.addEventListener('click', function(e) {
         }
         when_ready(function($) {
             var animation;
-            var term = $('.system .body').terminal(function() {
-                
-            }, {
+            term = $('.system .body').terminal($.noop, {
                 greetings: '',
-                keydown: function() {
+                keydown: function(e) {
+                    if (e.keyCode == 27) {
+                        exit();
+                    }
                     if (animation) {
                         return false;
                     }
@@ -62,64 +74,67 @@ pi.addEventListener('click', function(e) {
                     return false;
                 }
             });
-            $('.system .trinity-dialog').removeClass('hidden');
+            trinity_dialog = $('.system .trinity-dialog').removeClass('hidden');
             ssh_hack(term);
 
             async function ssh_hack(term) {
-                animation = true;
-                // hacking sequence from Matrix Reloaded
-                term.clear().echo([
-                    '# nmap -v -sS -O 10.2.2.2',
-                    '',
-                    'Starting nmap V. 2.54BETA25',
-                    'Insufficient responses for TCP sequencing (3). OS detection may be less',
-                    'accurate',
-                    'Interesting ports on 10.2.2.2:',
-                    '(The 1539 ports scanned but not shown below are in state: closed)',
-                    'Port\t\tState\t\tService\n22/tcp\t\topen\t\tssh',
-                    '',
-                    'No exact OS matches for host',
-                    '',
-                    'Nmap run completed -- 1 IP address (1 host up) scanneds'
-                ].join('\n'));
-                await term.typing('enter', 100, 'sshnuke 10.2.2.2 -rootpw="Z10N0101"');
-                term.set_prompt('');
-                async function step(msg) {
-                    msg = `${msg} ...`;
-                    term.echo(msg);
-                    var id = term.last_index();
+                try {
+                    animation = true;
+                    // hacking sequence from Matrix Reloaded
+                    term.clear().echo([
+                        '# nmap -v -sS -O 10.2.2.2',
+                        '',
+                        'Starting nmap V. 2.54BETA25',
+                        'Insufficient responses for TCP sequencing (3). OS detection may be less',
+                        'accurate',
+                        'Interesting ports on 10.2.2.2:',
+                        '(The 1539 ports scanned but not shown below are in state: closed)',
+                        'Port\t\tState\t\tService\n22/tcp\t\topen\t\tssh',
+                        '',
+                        'No exact OS matches for host',
+                        '',
+                        'Nmap run completed -- 1 IP address (1 host up) scanneds'
+                    ].join('\n'));
+                    await term.typing('enter', 100, 'sshnuke 10.2.2.2 -rootpw="Z10N0101"');
+                    term.set_prompt('');
+                    async function step(msg) {
+                        msg = `${msg} ...`;
+                        term.echo(msg);
+                        var id = term.last_index();
+                        await delay(1000);
+                        msg += ' successful.';
+                        term.update(-1, msg);
+                    }
+                    await step('Connecting to 10.2.2.2:ssh');
+                    await step('Attempting to exploit SSHv1 CRC32');
+                    term.echo('Reset root password to "Z10N0101".');
+                    await delay(400);
+                    term.echo('System open: Access level <9>');
+                    term.set_prompt('# ');
+                    await delay(400);
+                    await term.typing('enter', 100, 'ssh 10.2.2.2 -l root');
+                    term.set_prompt('root@10.2.2.2\'s password: ');
                     await delay(1000);
-                    msg += ' successful.';
-                    term.update(-1, msg);
-                }
-                await step('Connecting to 10.2.2.2:ssh');
-                await step('Attempting to exploit SSHv1 CRC32');
-                term.echo('Reset root password to "Z10N0101".');
-                await delay(400);
-                term.echo('System open: Access level <9>');
-                term.set_prompt('# ');
-                await delay(400);
-                await term.typing('enter', 100, 'ssh 10.2.2.2 -l root');
-                term.set_prompt('root@10.2.2.2\'s password: ');
-                await delay(1000);
-                term.set_prompt('RRF-CONTROL> ').echo('root@10.2.2.2\'s password: \n');
-                await delay(500);
-                await term.typing('enter', 100, 'disable grid nodes 21 - 48');
-                term.echo('');
-                term.echo('[[;#fff;]Warning: Disabling nodes 21-48 will disconnect sector 11 (27 nodes)]');
-                term.set_prompt('');
-                term.echo('         [[;#fff;]ARE YOU SURE? (y/n)]');
-                await delay(1000);
-                term.update(-1, '         [[;#fff;]ARE YOU SURE? (y/n)] y');
-                term.echo('');
-                await delay(200);
-                for (let i = 21; i <= 48; i++) {
-                    term.echo(`Grid Node ${i} offline...`);
+                    term.set_prompt('RRF-CONTROL> ').echo('root@10.2.2.2\'s password: \n');
+                    await delay(500);
+                    await term.typing('enter', 100, 'disable grid nodes 21 - 48');
+                    term.echo('');
+                    term.echo('[[;#fff;]Warning: Disabling nodes 21-48 will disconnect sector 11 (27 nodes)]');
+                    term.set_prompt('');
+                    term.echo('         [[;#fff;]ARE YOU SURE? (y/n)]');
+                    await delay(1000);
+                    term.update(-1, '         [[;#fff;]ARE YOU SURE? (y/n)] y');
+                    term.echo('');
                     await delay(200);
+                    for (let i = 21; i <= 48; i++) {
+                        term.echo(`Grid Node ${i} offline...`);
+                        await delay(200);
+                    }
+                    term.echo('\nConnection to 10.2.2.2 closed.');
+                    term.set_prompt('# ');
+                    animation = false;
+                } catch(e) {
                 }
-                term.echo('\nConnection to 10.2.2.2 closed.');
-                term.set_prompt('# ');
-                animation = false;
             }
         });
         document.body.classList.add('matrix');
