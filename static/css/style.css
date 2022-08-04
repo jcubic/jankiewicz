@@ -204,6 +204,7 @@ main ul {
 }
 /* CONTENT */
 blockquote {
+    margin-left: 25px;
     position: relative;
 }
 blockquote::before {
@@ -219,6 +220,16 @@ blockquote::before {
 <text y="0.9em" font-size="90" font-family="monospace">&gt;</text>\
 </svg>');
     background-size: 1em 1.145em;
+}
+ul {
+    list-style: none;
+    padding-left: 15px;
+}
+li::before {
+    content: "*";
+    position: relative;
+    top: 0.2em;
+    left: -0.2em;
 }
 
 :root {
