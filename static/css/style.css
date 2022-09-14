@@ -1,9 +1,62 @@
+:root {
+    --color: #152032;
+    --link: #2453BF;
+    --link-hover: #001E63;
+    --background: #e9e9e8;
+}
 html {
     position: relative;
 }
 body {
     font-family: monospace;
     margin-top: 0;
+    background: var(--background);
+    color: var(--color);
+}
+a, a:visited {
+    color: var(--link);
+}
+a:hover {
+    color: var(--link-hover);
+}
+a, a:visited {
+    text-underline-offset: 0.25em;
+    color: var(--color);
+}
+a:hover {
+    text-decoration: none;
+    color: var(--background);
+    background: var(--color);
+}
+h2 a,
+h3 a,
+h4 a {
+    text-decoration: none;
+}
+h2 a::before,
+h3 a::before {
+    color: var(--color);
+    background: var(--background);
+}
+main header h1, main h2, main h3 {
+    font-size: inherit;
+    display: inline-block;
+    margin: 0;
+}
+main h2, main h3 {
+    width: 100%;
+}
+/* jump to marker */
+span[id] {
+    display: block;
+    position: relative;
+    top: -2em;
+    visibility: hidden;
+}
+[data-mode="dark"] {
+    --color: #ccc;
+    --background: #1D1E22;
+    --link-hover: #4C7CEB;
 }
 nav.main {
     top: 0;
@@ -123,11 +176,14 @@ del.highlight-line-remove {
     position: relative;
 }
 footer p::before,
-main header h2::before,
-main header h3::before {
+main h2 a::before,
+main h3 a::before {
     content: "// :: ";
 }
 footer::before, footer::after,
+h2::before, h2::after,
+h3:before, h3::after,
+h4:before, h4::after,
 main header::before, main header::after {
     white-space: pre;
     content: "// ---------------------------------------------------------------------------------------------------------------";
@@ -202,6 +258,12 @@ main ul {
     padding: 0;
     line-height: 1.5em;
 }
+main li::before {
+    content: "*";
+    position: relative;
+    top: 0.2em;
+    left: -0.2em;
+}
 /* CONTENT */
 blockquote {
     margin-left: 25px;
@@ -225,35 +287,9 @@ ul {
     list-style: none;
     padding-left: 15px;
 }
-li::before {
-    content: "*";
-    position: relative;
-    top: 0.2em;
-    left: -0.2em;
+main li p {
+  display: inline;
 }
-
-:root {
-    --color: #152032;
-    --link: #2453BF;
-    --link-hover: #001E63;
-    --background: #e9e9e8;
-}
-body {
-    background: var(--background);
-    color: var(--color);
-}
-a, a:visited {
-    color: var(--link);
-}
-a:hover {
-    color: var(--link-hover);
-}
-[data-mode="dark"] {
-    --color: #ccc;
-    --background: #1D1E22;
-    --link-hover: #4C7CEB;
-}
-
 @media (prefers-color-scheme: dark) {
     :root {
         --color: white;

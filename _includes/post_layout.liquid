@@ -1,0 +1,19 @@
+---
+layout: main_layout.liquid
+---
+<header>
+ <h1>
+   {{ title }}
+ </h1>
+ <div class="meta">
+   {% assign user = author | default: "jcubic" %}
+   <p class="author">
+     <a href="{{ users[user].url }}">
+       {{- users[user].name -}}
+     </a>
+   </p>
+ </div>
+</header>
+<section>
+ {{ content }}
+</section>
