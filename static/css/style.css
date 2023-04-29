@@ -411,6 +411,10 @@ body.matrix {
 .hidden {
     display: none;
 }
+::selection {
+    color: var(--background);
+    background: var(--color);
+}
 .trinity-dialog {
     --size: 1.4;
     --background: black;
