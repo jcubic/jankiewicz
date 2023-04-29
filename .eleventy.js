@@ -14,4 +14,17 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", md);
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPassthroughCopy({ "static": "." });
+    eleventyConfig.addCollection("articleSets", function(collectionApi) {
+        const collections = collectionApi.getAll();
+        return collections.reduce((result, template) => {
+            if (!Array.isArray(template.data.tags)) {
+                return result;
+            }
+            const tag = template.data.tags.find(key => key.startsWith("articles_"));
+            if (tag) {
+                result.push(tag);
+            }
+            return result;
+        }, []);
+    });
 };

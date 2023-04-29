@@ -1,8 +1,10 @@
 ---
-title: Witaj na moim blogu
-description: Mój pierwszy wpis na blogu jakub.jankiewicz.org
+title: Welcome to my blog
+description: This is my first entry in jakub.jankiewicz.org blog
 tags: articles_en
 ---
+
+This is English Version.
 
 Treścią tego bloga będzie wszystko co mnie interesuje.  Jestem głównie
 programistą. Mam [kilka projektów Open Source](https://github.com/jcubic).
