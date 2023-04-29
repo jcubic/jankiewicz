@@ -43,7 +43,7 @@ pi.addEventListener('click', function(e) {
     }
     if (e.ctrlKey && e.shiftKey) {
         // https://tinyurl.com/the-net
-        matrix(m, { font_size: 20 });
+        load_matrix();
         if (!window.jQuery || !window.jQuery.terminal) {
             const head = document.querySelector('head');
             new_script(head, 'https://cdn.jsdelivr.net/npm/jquery');
@@ -176,6 +176,28 @@ function when_ready(fn) {
     }).then(function() {
         fn(jQuery.noConflict(true));
     });
+}
+
+function load_matrix() {
+   const font = new FontFace('matrix', 'url(https://jcubic.github.io/cmatrix/Matrix-Code.ttf)');
+   font.load().then(font => {
+       document.fonts.add(font);
+
+       const make_chars = (...nums) => {
+           return nums.map(num => String.fromCharCode(num));
+       };
+
+       const nums = [0x25AA, 0x254C, 0x00A9, 0x00A6, 0x007C, 0x007A, 0x003E, 0x003C, 0x003A, 0x0022, 0x002A, 0x002B,0x30A2,0x30A6,0x30A8,0x30AA,0x30AB,0x30AD,0x30B1,0x30B3,0x30B5,0x30B7,0x30B9,0x30BB,0x30BD,0x30BF,0x30C4,0x30C6,0x30CA,0x30CB,0x30CC,0x30CD,0x30CF,0x30D2,0x30DB,0x30DE,0x30DF,0x30E0,0x30E1,0x30E2,0x30E4,0x30E8,0x30E9,0x30EA,0x30EF,0x30FC, 0xA78A, 0xE937];
+
+       const chars = matrix.range(0x0030, 0x0035)
+                           .concat(matrix.range(0x0037, 0x0039))
+                           .concat(make_chars(...nums));
+       matrix(m, {
+           chars,
+           font: 'matrix',
+           font_size: 20
+       });
+   });
 }
 
 function delay(timeout) {
