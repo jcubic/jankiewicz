@@ -24,8 +24,8 @@ layout: main_layout.liquid
 
     {% for collection in collections.articleSets %}
       {% assign otherArticles = collections[collection] | where: "data.en", originalTitle %}
+      {% assign article_lang = collection | remove: "articles_" %}
       {% for article in otherArticles %}
-        {% assign article_lang = collection | remove: "articles_" %}
         {% for article in otherArticles %}
           {% if article_lang == lang %}
             <li class="selected">({{ lang }})</li>
@@ -34,7 +34,9 @@ layout: main_layout.liquid
           {% endif %}
         {% endfor %}
       {% endfor %}
+      <li>
       {% assign otherArticle = collections[collection] | where: "data.title", originalTitle | first %}
+      </li>
       {% if otherArticle %}
         {% if lang == "en" %}
           <li class="selected">({{ lang }})</li>

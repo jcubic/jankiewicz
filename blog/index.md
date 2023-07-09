@@ -2,11 +2,14 @@
 title: Jakub Jankiewicz Blog
 description: This is my personal blog, where I write about different topics
 layout: main_layout.liquid
+tags: index_en
 ---
 
 <header>
  <h1>Jakub Jankiewicz Blog</h1>
 </header>
+
+{% include "_langs" %}
 
 I'm Jakub Jankiewicz. I'm from Poland and I work as Front-End developer.
 Welcome to my personal blog where I share information about different topics.
