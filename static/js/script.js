@@ -29,8 +29,8 @@ cookie_ok.addEventListener('click', function() {
 });
 pi.addEventListener('click', function(e) {
     e.preventDefault();
-    var trinity_dialog;
-    var term;
+    let trinity_dialog;
+    let term;
     function exit() {
         document.body.classList.remove('matrix');
         if (trinity_dialog) {
@@ -43,26 +43,26 @@ pi.addEventListener('click', function(e) {
     }
     if (e.ctrlKey && e.shiftKey) {
         // https://tinyurl.com/the-net
-        load_matrix();
+        const head = document.querySelector('head');
+        new_script(head, 'https://cdn.jsdelivr.net/npm/cmatrix');
+        wait(() => typeof matrix !== 'undefined').then(load_matrix);
         if (!window.jQuery || !window.jQuery.terminal) {
-            const head = document.querySelector('head');
             new_script(head, 'https://cdn.jsdelivr.net/npm/jquery');
             wait(function() {
                 return typeof jQuery !== 'undefined';
             }).then(function() {
-                new_script(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@nocache=2/js/jquery.terminal.js');
+                new_script(head, 'https://cdn.jsdelivr.net/npm/jquery.terminal');
             });
-            new_style(head, 'https://cdn.jsdelivr.net/gh/jcubic/jquery.terminal@nocache=2/css/jquery.terminal.min.css');
+            new_style(head, 'https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css');
         }
         when_ready(function($) {
-            var animation;
+            let animation;
             term = $('.system .body').terminal($.noop, {
                 greetings: '',
                 keydown: function(e) {
                     if (e.keyCode == 27) {
                         exit();
-                    }
-                    if (animation) {
+                    } else if (animation) {
                         return false;
                     }
                 },
