@@ -55,6 +55,7 @@ module.exports = function(eleventyConfig) {
 
         return new Date(Math.max(...collection.map(item => {return item.date})));
     });
+    eleventyConfig.addFilter("rtrim", str => str.replace(/\s+$/, ''));
     eleventyConfig.addTransform("minification", async function(content) {
         if (dev) {
             return content;
