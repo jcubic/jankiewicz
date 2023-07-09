@@ -2,6 +2,9 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const abbr = require("markdown-it-abbr");
 const { minify } = require('html-minifier-terser');
+const { encode } = require('html-entities');
+
+const dev = process.env['ELEVENTY_ENV'] === 'dev';
 
 function filter_tags(collectionApi, filter_callback) {
     const collections = collectionApi.getAll();
@@ -18,13 +21,11 @@ function filter_tags(collectionApi, filter_callback) {
 }
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.setTemplateFormats([
-        "md"
-    ]);
     const options = {
         html: true,
         linkify: true
     };
+
     const md = markdownIt(options).use(abbr);
     eleventyConfig.setLibrary("md", md);
     eleventyConfig.addPlugin(syntaxHighlight);
@@ -37,7 +38,27 @@ module.exports = function(eleventyConfig) {
             return tag.replace(/index_/, '');
         });
     });
+    eleventyConfig.addFilter("intro", function(content) {
+        const m = content.match(/^([\s\S]+)<!-- more -->/);
+        if (m) {
+            return m[1].trim();
+        }
+        return content;
+    });
+    eleventyConfig.addFilter("xml_escape", function(str) {
+        return encode(str, {level: 'xml'});
+    });
+    eleventyConfig.addFilter("lastDate", function(collection) {
+        if (!collection || !collection.length) {
+            return emptyFallbackDate || new Date();
+        }
+
+        return new Date(Math.max(...collection.map(item => {return item.date})));
+    });
     eleventyConfig.addTransform("minification", async function(content) {
+        if (dev) {
+            return content;
+        }
         const path = this.page.outputPath;
         if (path.endsWith('.html')) {
             return minify(content, {
@@ -46,4 +67,10 @@ module.exports = function(eleventyConfig) {
         }
         return content; // no change done.
     });
+    eleventyConfig.addGlobalData('site', {
+        url: 'https://jakub.jankiewicz.org'
+    });
+    return {
+        dev
+    };
 };

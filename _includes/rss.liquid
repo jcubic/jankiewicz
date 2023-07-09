@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    {%- if lang == "en" -%}
+      {% assign base_url = site.url | append: "/blog/" %}
+    {%- else %}
+      {% assign base_url = lang | prepend: "/" | prepend: site.url %}
+    {%- endif %}
+    {{ content }}
+    <link>{{ base_url }}</link>
+    <atom:link href="{{ base_url }}rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ collections[collection] | lastDate | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
+    {%- for post in collections[collection] reversed | slice: 0, 10 -%}
+      {% assign post_url = site.url | append: post.url %}
+      <item>
+        <title>{{ post.data.title }}</title>
+        <link>{{ post_url }}</link>
+        <description>{{ post.templateContent | intro | xml_escape }}</description>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <dc:creator>{{ users[post.data.author].name }}</dc:creator>
+        <guid isPermaLink="true">{{ post_url }}</guid>
+      </item>
+    {%- endfor %}
+  </channel>
+</rss>

@@ -2,6 +2,8 @@
 title: Witaj na moim blogu
 description: Mój pierwszy wpis na blogu jakub.jankiewicz.org
 en: Welcome to my blog
+autor: jcubic
+date: 2023-07-09
 tags: articles_pl
 ---
 
@@ -11,6 +13,8 @@ Jestem także edytorem polskiej Wikipedii, zajmuję się fotografią i projektuj
 logotypy (ale nie zarobkowo). Interesuję się matematyką, grafiką komputerową,
 komiksami (w tym mangą oraz anime). Wiele rzeczy będzie na tematy, które nie
 pasują do mojego bloga ["Głównie JavaScript"](https://jcubic.pl).
+
+<!-- more -->
 
 Powodem dla którego postanowiłem założyć tego bloga, jest moja marka osobista,
 nad którą chciałem popracować. Chciałem mieć coś co łatwo jest utożsamić z moim

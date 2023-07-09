@@ -6,7 +6,7 @@ tags: index_pl
 ---
 
 <header>
- <h1>Jakub Jankiewicz Blog</h1>
+ <h1>Blog Jakuba Jankiewicza</h1>
 </header>
 
 {% include "_langs" %}

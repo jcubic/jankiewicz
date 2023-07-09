@@ -4,7 +4,7 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "ELEVENTY_ENV=dev eleventy --serve",
     "build": "eleventy"
   },
   "keywords": [],
@@ -13,8 +13,11 @@
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "eleventy-xml-plugin": "^0.1.0",
     "figlet": "^1.6.0",
+    "html-entities": "^2.4.0",
     "html-minifier-terser": "^7.2.0",
-    "markdown-it-abbr": "^1.0.4"
+    "markdown-it-abbr": "^1.0.4",
+    "striptags": "^3.2.0"
   }
 }

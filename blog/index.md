@@ -1,7 +1,7 @@
 ---
+layout: main_layout.liquid
 title: Jakub Jankiewicz Blog
 description: This is my personal blog, where I write about different topics
-layout: main_layout.liquid
 tags: index_en
 ---
 
