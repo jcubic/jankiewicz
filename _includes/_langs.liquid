@@ -1,11 +1,11 @@
 <nav class="languages">  
   <ul>
-    {% for l in collections.langs %}
-      {% if l == lang %}
-<li class="selected">({{- l -}})</li>
-      {% else %}
-<li><a href="{% if l != "en" %}/{{- l -}}{% endif %}/blog">({{- l -}})</a><li>
-      {% endif %}
-    {% endfor %}
+    {%- for l in collections.langs %}
+      {%- if l == lang %}
+        <li class="selected">({{- l -}})</li>
+      {%- else %}
+        <li><a href="{% if l != "en" %}/{{- l -}}{% endif %}/blog">({{- l -}})</a><li>
+      {%- endif %}
+    {%- endfor %}
   </ul>
 </nav>
