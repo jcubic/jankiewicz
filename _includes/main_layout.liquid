@@ -22,7 +22,11 @@
       </label>
     </div>
     <div class="bottom">
-      <a href="/rss.xml" class="rss brakets">RSS</a>
+      {% if lang == 'en' %}
+        <a href="/blog/rss.xml" class="rss brakets">RSS</a>
+      {% else %}
+        <a href="/{{ lang }}/blog/rss.xml" class="rss brakets">RSS</a>
+      {% endif %}
       <a href="https://twitter.com/jcubic">@jcubic</a>
     </div>
   </nav>
