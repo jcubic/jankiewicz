@@ -70,6 +70,15 @@ nav.main {
 nav.main pre {
     flex-grow: 1;
 }
+header.top a, header.top a:hover {
+    text-decoration: none;
+    color: var(--color);
+    background: var(--background);
+}
+header.top pre {
+    color: inherit;
+    background: inherit;
+}
 nav.main .bottom {
     position: fixed;
     top: calc(20px + 1em);
@@ -198,7 +207,7 @@ header.top {
     max-width: 151ch;
     margin: auto;
 }
-header.top > pre {
+header.top pre {
     display: none;
     user-select: none;
 }

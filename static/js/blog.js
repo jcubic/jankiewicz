@@ -18,7 +18,7 @@ let char = char_size();
 let cookie_consent = !!localStorage.getItem('cookie');
 const [progress] = $$('nav.main pre');
 if (!cookie_consent) {
-    display_baner('');
+    //display_baner('');
 }
 window.addEventListener('resize', resize, { passive: true });
 document.addEventListener('scroll', render_progress, { passive: true });
