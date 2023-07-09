@@ -1,8 +1,8 @@
 {
     "cookie": {
-        "pre": "Ta strona używa ciasteczek w celach statystycznych",
-        "more": "Czytaj Więcej ...",
-        "ok": "Rozumiem"
+        "pre": "This page uses cookies for analytics",
+        "more": "Read more ...",
+        "ok": "I understand"
     },
     "lang": "en",
     "layout": "post_layout.liquid"
