@@ -33,4 +33,4 @@ na grupie SEO na Facebooku i dostałem zgoła inną odpowiedź.  Było nią "zal
 jaki mam budżet". Więc domyślam się, że da się to zrobić.  Zobaczymy jak mi
 pójdzie.
 
-{% include "abbr" %}
+{% include "_abbr" %}
