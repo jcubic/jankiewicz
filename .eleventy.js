@@ -1,7 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const abbr = require("markdown-it-abbr");
-
+const { minify } = require('html-minifier-terser');
 
 function filter_tags(collectionApi, filter_callback) {
     const collections = collectionApi.getAll();
@@ -36,5 +36,14 @@ module.exports = function(eleventyConfig) {
         return filter_tags(collectionApi, key => key.startsWith("index_")).map(tag => {
             return tag.replace(/index_/, '');
         });
+    });
+    eleventyConfig.addTransform("minification", async function(content) {
+        const path = this.page.outputPath;
+        if (path.endsWith('.html')) {
+            return htmlTerser(content, {
+                collapseWhitespace: true
+            });
+        }
+        return content; // no change done.
     });
 };
