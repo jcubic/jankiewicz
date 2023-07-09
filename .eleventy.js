@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addTransform("minification", async function(content) {
         const path = this.page.outputPath;
         if (path.endsWith('.html')) {
-            return htmlTerser(content, {
+            return minify(content, {
                 collapseWhitespace: true
             });
         }
