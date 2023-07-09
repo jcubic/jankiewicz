@@ -2,7 +2,7 @@
 title: Witaj na moim blogu
 description: Mój pierwszy wpis na blogu jakub.jankiewicz.org
 en: Welcome to my blog
-autor: jcubic
+author: jcubic
 date: 2023-07-09
 tags: articles_pl
 ---

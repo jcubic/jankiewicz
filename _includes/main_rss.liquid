@@ -3,10 +3,10 @@
   <channel>
     {%- if lang == "en" -%}
       {% assign base_url = site.url | append: "/blog/" %}
-    {%- else %}
+    {%- else -%}
       {% assign base_url = lang | prepend: "/" | prepend: site.url %}
-    {%- endif %}
-    {{ content }}
+    {%- endif -%}
+    {{- content | rtrim }}
     <link>{{ base_url }}</link>
     <atom:link href="{{ base_url }}rss.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>{{ collections[collection] | lastDate | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
