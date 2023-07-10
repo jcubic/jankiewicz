@@ -45,7 +45,12 @@
   {{ content }}
   </main>
   <footer>
-   <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a> | {{ source | md }}</p>
+    {%- if lang != "en" -%}
+      {% assign lang_suffix = lang | append: "/" | prepend: "/" %}
+    {%- else -%}
+      {% assign lang_suffix = "/" %}
+    {%- endif %}
+    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jakub.jankiewicz.org{{ lang_suffix }}">Jakub T. Jankiewicz</a> | {{ source | md }}</p>
    <p>{{ license | md }}</p>
  </footer>
  <div class="system">
