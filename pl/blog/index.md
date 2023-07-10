@@ -1,5 +1,6 @@
 ---
 title: Jakub Jankiewicz Blog
+en: Jakub Jankiewicz Blog
 description: To jest mój osobisty blog, gdzie piszę i różnych rzeczach
 layout: main_layout.liquid
 tags: index_pl

@@ -43,6 +43,11 @@ module.exports = function(eleventyConfig) {
         });
     });
 
+    eleventyConfig.addFilter("debug", obj => {
+        console.log({obj});
+        return JSON.stringify(obj, null, 2);
+    });
+
     eleventyConfig.addFilter('md', function(content) {
         return md.render(content).trim().replace(/(^<p>)|(<\/p>$)/g, '');
     });

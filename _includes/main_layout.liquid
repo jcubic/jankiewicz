@@ -7,6 +7,25 @@
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
   <link rel="stylesheet" href="/{% with_hash "css/blog.css" %}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  {% if lang == "en" -%}
+    {% assign originalTitle = title %}
+  {%- else -%}
+    {% assign originalTitle = en %}
+  {%- endif -%}
+  {%- for collection in collections.all -%}
+    {%- assign otherArticles = collection | where: "data.en", originalTitle %}
+    {%- assign originalArticles = collection | where: "data.title", originalTitle %}
+    {%- for article in originalArticles -%}
+      {%-if article.data.lang == "en" -%}
+        <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="x-default" />
+        <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="{{ article.data.lang }}" />
+      {% endif -%}
+    {% endfor -%}
+    {%- for article in otherArticles -%}
+      <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="{{ article.data.lang }}" />
+    {%- endfor -%}
+  {%- endfor %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 </head>
 <body>
   <nav class="main">
