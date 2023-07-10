@@ -1,4 +1,4 @@
-# Personal blog of Jakub T. Jankiewicz
+# [Personal blog of Jakub T. Jankiewicz](https://jakub.jankiewicz.org/blog/)
 
 This is the source code of a personal blog. The code is open and on GitHub but the
 layout is not Open Source. The content of the blog is released under
