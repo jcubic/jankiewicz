@@ -45,7 +45,8 @@
   {{ content }}
   </main>
   <footer>
-   <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a></p>
+   <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jcubic.pl/me">Jakub T. Jankiewicz</a> | {{ source | md }}</p>
+   <p>{{ license | md }}</p>
  </footer>
  <div class="system">
    <!-- ref: https://www.youtube.com/watch?v=W3bF4ASGJWA -->

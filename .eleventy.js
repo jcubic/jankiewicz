@@ -43,6 +43,10 @@ module.exports = function(eleventyConfig) {
         });
     });
 
+    eleventyConfig.addFilter('md', function(content) {
+        return md.render(content).trim().replace(/(^<p>)|(<\/p>$)/g, '');
+    });
+
     eleventyConfig.addAsyncShortcode('with_hash', async function(filename) {
         const content = await fs.readFile(`./static/${filename}`, 'utf8');
         const hash = crc32(content);

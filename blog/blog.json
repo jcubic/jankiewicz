@@ -5,5 +5,7 @@
         "ok": "I understand"
     },
     "lang": "en",
+    "source": "[blog source](https://github.com/jcubic/jankiewicz-blog)",
+    "license": "The content of this blog is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license",
     "layout": "post_layout.liquid"
 }
