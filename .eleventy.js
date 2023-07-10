@@ -3,6 +3,8 @@ const markdownIt = require("markdown-it");
 const abbr = require("markdown-it-abbr");
 const { minify } = require('html-minifier-terser');
 const { encode } = require('html-entities');
+const crc32 = require('./crc32');
+const fs = require('fs/promises');
 
 const dev = process.env['ELEVENTY_ENV'] === 'dev';
 
@@ -30,13 +32,21 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", md);
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPassthroughCopy({ "static": "." });
+
     eleventyConfig.addCollection("articleSets", function(collectionApi) {
         return filter_tags(collectionApi, key => key.startsWith("articles_"));
     });
+
     eleventyConfig.addCollection("langs", function(collectionApi) {
         return filter_tags(collectionApi, key => key.startsWith("index_")).map(tag => {
             return tag.replace(/index_/, '');
         });
+    });
+
+    eleventyConfig.addAsyncShortcode('with_hash', async function(filename) {
+        const content = await fs.readFile(`./static/${filename}`, 'utf8');
+        const hash = crc32(content);
+        return `${filename}?${hash}`;
     });
     eleventyConfig.addFilter("intro", function(content) {
         const m = content.match(/^([\s\S]+)<!-- more -->/);
@@ -45,9 +55,11 @@ module.exports = function(eleventyConfig) {
         }
         return content;
     });
+
     eleventyConfig.addFilter("xml_escape", function(str) {
         return encode(str, {level: 'xml'});
     });
+
     eleventyConfig.addFilter("lastDate", function(collection) {
         if (!collection || !collection.length) {
             return emptyFallbackDate || new Date();
@@ -55,7 +67,9 @@ module.exports = function(eleventyConfig) {
 
         return new Date(Math.max(...collection.map(item => {return item.date})));
     });
+
     eleventyConfig.addFilter("rtrim", str => str.replace(/\s+$/, ''));
+
     eleventyConfig.addTransform("minification", async function(content) {
         if (dev) {
             return content;
@@ -68,9 +82,11 @@ module.exports = function(eleventyConfig) {
         }
         return content; // no change done.
     });
+
     eleventyConfig.addGlobalData('site', {
         url: 'https://jakub.jankiewicz.org'
     });
+
     return {
         dev
     };

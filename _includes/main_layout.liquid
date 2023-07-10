@@ -5,7 +5,7 @@
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}"/>
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/blog.css"/>
+  <link rel="stylesheet" href="/{% with_hash "css/blog.css" %}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
@@ -70,7 +70,7 @@
    <p>{{ cookie.pre }} <a href="/cookies.html">{{ cookie.more }}</a></p>
    <p><button id="cookie_ok" class="btn">{{ cookie.ok }}</button></p>
  </div>
- <script type="module" src="/js/blog.js"></script>
- {% include "_analytics" %}
+ <script type="module" src="/{% with_hash "js/blog.js" %}"></script>
+ {%- include "_analytics" -%}
 </body>
 </html>
