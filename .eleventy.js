@@ -1,6 +1,6 @@
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const markdownIt = require("markdown-it");
-const abbr = require("markdown-it-abbr");
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const markdownIt = require('markdown-it');
+const abbr = require('markdown-it-abbr');
 const { minify } = require('html-minifier-terser');
 const { encode } = require('html-entities');
 const crc32 = require('./crc32');
@@ -29,16 +29,16 @@ module.exports = function(eleventyConfig) {
     };
 
     const md = markdownIt(options).use(abbr);
-    eleventyConfig.setLibrary("md", md);
+    eleventyConfig.setLibrary('md', md);
     eleventyConfig.addPlugin(syntaxHighlight);
-    eleventyConfig.addPassthroughCopy({ "static": "." });
+    eleventyConfig.addPassthroughCopy({ 'static': '.' });
 
-    eleventyConfig.addCollection("articleSets", function(collectionApi) {
-        return filter_tags(collectionApi, key => key.startsWith("articles_"));
+    eleventyConfig.addCollection('articleSets', function(collectionApi) {
+        return filter_tags(collectionApi, key => key.startsWith('articles_'));
     });
 
-    eleventyConfig.addCollection("langs", function(collectionApi) {
-        return filter_tags(collectionApi, key => key.startsWith("index_")).map(tag => {
+    eleventyConfig.addCollection('langs', function(collectionApi) {
+        return filter_tags(collectionApi, key => key.startsWith('index_')).map(tag => {
             return tag.replace(/index_/, '');
         });
     });
@@ -48,7 +48,8 @@ module.exports = function(eleventyConfig) {
         const hash = crc32(content);
         return `${filename}?${hash}`;
     });
-    eleventyConfig.addFilter("intro", function(content) {
+
+    eleventyConfig.addFilter('intro', function(content) {
         const m = content.match(/^([\s\S]+)<!-- more -->/);
         if (m) {
             return m[1].trim();
@@ -56,11 +57,11 @@ module.exports = function(eleventyConfig) {
         return content;
     });
 
-    eleventyConfig.addFilter("xml_escape", function(str) {
+    eleventyConfig.addFilter('xml_escape', function(str) {
         return encode(str, {level: 'xml'});
     });
 
-    eleventyConfig.addFilter("lastDate", function(collection) {
+    eleventyConfig.addFilter('lastDate', function(collection) {
         if (!collection || !collection.length) {
             return emptyFallbackDate || new Date();
         }
@@ -68,9 +69,9 @@ module.exports = function(eleventyConfig) {
         return new Date(Math.max(...collection.map(item => {return item.date})));
     });
 
-    eleventyConfig.addFilter("rtrim", str => str.replace(/\s+$/, ''));
+    eleventyConfig.addFilter('rtrim', str => str.replace(/\s+$/, ''));
 
-    eleventyConfig.addTransform("minification", async function(content) {
+    eleventyConfig.addTransform('minification', async function(content) {
         if (dev) {
             return content;
         }
