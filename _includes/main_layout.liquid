@@ -22,27 +22,27 @@
       </label>
     </div>
     <div class="bottom">
-      {% if lang == 'en' %}
+      {%- if lang == 'en' -%}
         <a href="/blog/rss.xml" class="rss brakets">RSS</a>
-      {% else %}
+      {%- else -%}
         <a href="/{{ lang }}/blog/rss.xml" class="rss brakets">RSS</a>
-      {% endif %}
+      {%- endif -%}
       <a href="https://twitter.com/jcubic">@jcubic</a>
     </div>
   </nav>
   <header class="top">
-    {% if lang == 'en' %}
+    {%- if lang == 'en' -%}
       <a href="/blog/">
-    {% else %}
-      <a href="/{{- lang -}}/blog/">
-    {% endif %}
-    <pre class="big" aria-hidden="true" role="presentation">{{- figlet.big -}}</pre>
-    <pre class="small" aria-hidden="true" role="presentation">{{- figlet.small -}}</pre>
-    <pre class="wrap" aria-hidden="true" role="presentation">{{- figlet.wrap -}}</pre>
+    {%- else -%}
+      <a href="/{{ lang }}/blog/">
+    {%- endif -%}
+    <pre class="big" aria-hidden="true" role="presentation">{{ figlet.big }}</pre>
+    <pre class="small" aria-hidden="true" role="presentation">{{ figlet.small }}</pre>
+    <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
     </a>
   </header>
   <main>
-  {{ content }}
+  {{ content -}}
   </main>
   <footer>
     {%- if lang != "en" -%}

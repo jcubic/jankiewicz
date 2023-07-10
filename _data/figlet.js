@@ -23,7 +23,7 @@ const config = {
 };
 
 const render = async (...args) => {
-    return escape(await figlet(...args));
+    return escape(await figlet(...args)).replace(/\s+$/gm, '');
 };
 
 module.exports = async () => {
