@@ -15,10 +15,10 @@ $$('.dark-mode').on('change', function(e) {
 let cols;
 const COL_MARGIN = 30;
 let char = char_size();
-let cookie_consent = !!localStorage.getItem('cookie');
+let cookie_consent = true; //!!localStorage.getItem('cookie');
 const [progress] = $$('nav.main pre');
 if (!cookie_consent) {
-    //display_baner('');
+    display_baner('');
 }
 window.addEventListener('resize', resize, { passive: true });
 document.addEventListener('scroll', render_progress, { passive: true });
@@ -213,10 +213,10 @@ function render_progress() {
 
 function resize() {
     char = char_size();
+    cols = get_col_size(progress.parentNode) - COL_MARGIN;
     if (!cookie_consent) {
         cookie_resize();
     }
-    cols = get_col_size(progress.parentNode) - COL_MARGIN;
     render_progress();
 }
 
