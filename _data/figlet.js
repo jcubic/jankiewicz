@@ -13,7 +13,6 @@ function escape(s) {
     return s.replace(/[&"'<>]/g, c => lookup[c]);
 }
 
-
 const config = {
     font: 'Colossal',
     horizontalLayout: 'default',
