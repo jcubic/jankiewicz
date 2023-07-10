@@ -13,15 +13,13 @@ body {
     background: var(--background);
     color: var(--color);
 }
-a, a:visited {
-    color: var(--link);
-}
 a:hover {
     color: var(--link-hover);
 }
 a, a:visited {
     text-underline-offset: 0.25em;
     color: var(--color);
+    display: inline-block;
 }
 a:hover {
     text-decoration: none;
@@ -201,6 +199,7 @@ main header::after,
     display: block;
     max-width: 100%;
     overflow: hidden;
+    font-weight: normal;
 }
 header.top {
     font-size: 12px;
