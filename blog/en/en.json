@@ -4,6 +4,7 @@
         "more": "Read more ...",
         "ok": "I understand"
     },
+    "permalink": "/blog/{{ page.fileSlug }}/",
     "lang": "en",
     "source": "[blog source](https://github.com/jcubic/jankiewicz-blog)",
     "license": "The content of this blog is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license",
