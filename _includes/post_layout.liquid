@@ -14,35 +14,7 @@ layout: main_layout.liquid
    </p>
  </div>
 </header>
-<nav class="languages">
-  <ul>
-    {%- if lang == "en" -%}
-      {%- assign originalTitle = title -%}
-    {%- else -%}
-      {%- assign originalTitle = en -%}
-    {%- endif -%}
-
-    {% for collection in collections.articleSets -%}
-      {%- assign otherArticles = collections[collection] | where: "data.en", originalTitle -%}
-      {%- assign article_lang = collection | remove: "articles_" %}
-      {% for article in otherArticles -%}
-        {% if article_lang == lang -%}
-          <li class="selected">({{ lang }})</li>
-        {%- elsif article_lang -%}
-          <li><a href="{{ article.url }}">({{ article_lang }})</a></li>
-        {%- endif -%}
-      {%- endfor -%}
-      {% assign otherArticle = collections[collection] | where: "data.title", originalTitle | first %}
-      {%- if otherArticle -%}
-        {% if lang == "en" %}
-          <li class="selected">({{ lang }})</li>
-        {%- else -%}
-          <li><a href="{{ otherArticle.url }}">(en)</a><li>
-        {%- endif -%}
-      {%- endif -%}
-    {%- endfor %}
-  </ul>
-</nav>
+{% include "_langs" %}
 <section>
   {{ content }}
 </section>

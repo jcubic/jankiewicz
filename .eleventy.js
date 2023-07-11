@@ -34,7 +34,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ 'static': '.' });
 
     eleventyConfig.addCollection('articleSets', function(collectionApi) {
-        return filter_tags(collectionApi, key => key.startsWith('articles_'));
+        return filter_tags(collectionApi, key => key.match(/articles_|pages_/));
     });
 
     eleventyConfig.addCollection('langs', function(collectionApi) {
@@ -43,9 +43,10 @@ module.exports = function(eleventyConfig) {
         });
     });
 
-    eleventyConfig.addFilter("debug", obj => {
-        console.log({obj});
-        return JSON.stringify(obj, null, 2);
+    eleventyConfig.addFilter("dump", obj => {
+        if (obj) {
+            return JSON.stringify(Object.keys(obj), null, 2);
+        }
     });
 
     eleventyConfig.addFilter('md', function(content) {

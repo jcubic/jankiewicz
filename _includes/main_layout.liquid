@@ -102,8 +102,10 @@
    </div>
    <!-- ref: https://www.youtube.com/watch?v=0PxTAn4g20U -->
  </div>
- <div class="cookies" id="cookie_baner" style="display: none">
-   <p>{{ cookie.pre }} <a href="/cookies.html">{{ cookie.more }}</a></p>
+ 
+ {% assign cookie_page = lang_suffix | append: "blog/cookies/" %}
+ <div class="cookies" id="cookie_banner" style="display: none">
+   <p>{{ cookie.pre }}{% if page.url != cookie_page %} <a href="{{ lang_suffix }}blog/cookies/">{{ cookie.more }}</a>{% endif %}</p>
    <p><button id="cookie_ok" class="btn">{{ cookie.ok }}</button></p>
  </div>
  <script type="module" src="/{% with_hash "js/blog.js" %}"></script>

@@ -15,18 +15,21 @@ $$('.dark-mode').on('change', function(e) {
 let cols;
 const COL_MARGIN = 30;
 let char = char_size();
-let cookie_consent = true; //!!localStorage.getItem('cookie');
+let cookie_consent = !!localStorage.getItem('cookie');
 const [progress] = $$('nav.main pre');
+const cookie_banner_exists = typeof cookie_banner !== 'undefined';
 if (!cookie_consent) {
-    display_baner('');
+    display_banner('');
 }
 window.addEventListener('resize', resize, { passive: true });
 document.addEventListener('scroll', render_progress, { passive: true });
-cookie_ok.addEventListener('click', function() {
-    localStorage.setItem('cookie', true);
-    cookie_consent = true;
-    display_baner('none');
-});
+if (cookie_banner_exists) {
+    cookie_ok.addEventListener('click', function() {
+        localStorage.setItem('cookie', true);
+        cookie_consent = true;
+        display_banner('none');
+    });
+}
 pi.addEventListener('click', function(e) {
     e.preventDefault();
     let trinity_dialog;
@@ -214,23 +217,23 @@ function render_progress() {
 function resize() {
     char = char_size();
     cols = get_col_size(progress.parentNode) - COL_MARGIN;
-    if (!cookie_consent) {
+    if (!cookie_consent && cookie_banner_exists) {
         cookie_resize();
     }
     render_progress();
 }
 
 
-function display_baner(value) {
-    cookie_baner.style.display = value;
+function display_banner(value) {
+    cookie_banner.style.display = value;
 }
 
 function cookie_resize() {
-    cookie_baner.style.right = 0;
-    const cols = get_col_size(cookie_baner) - 2;
+    cookie_banner.style.right = 0;
+    const cols = get_col_size(cookie_banner) - 2;
     const line = '+' + '-'.repeat(cols) + '+';
-    cookie_baner.dataset.line = line;
-    cookie_baner.style.removeProperty('right');
+    cookie_banner.dataset.line = line;
+    cookie_banner.style.removeProperty('right');
 }
 
 

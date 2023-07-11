@@ -1,11 +1,29 @@
 <nav class="languages">
   <ul>
-    {%- for l in collections.langs %}
-      {%- if l == lang %}
-        <li class="selected">({{- l -}})</li>
-      {%- else %}
-        <li><a href="{% if l != "en" %}/{{- l -}}{% endif %}/blog">({{- l -}})</a><li>
-      {%- endif %}
+    {%- if lang == "en" -%}
+      {%- assign originalTitle = title -%}
+    {%- else -%}
+      {%- assign originalTitle = en -%}
+    {%- endif -%}
+
+    {% for collection in collections.articleSets -%}
+      {%- assign otherArticles = collections[collection] | where: "data.en", originalTitle -%}
+      {%- assign article_lang = collection | remove: "articles_" | remove: "pages_" %}
+      {%- for article in otherArticles -%}
+        {%- if article_lang == lang -%}
+          <li class="selected">({{ lang }})</li>
+        {%- elsif article_lang -%}
+          <li><a href="{{ article.url }}">({{ article_lang }})</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+      {% assign original = collections[collection] | where: "data.title", originalTitle | first %}
+      {%- if original -%}
+        {%- if lang == "en" -%}
+          <li class="selected">({{ lang }})</li>
+        {%- else -%}
+          <li><a href="{{ original.url }}">(en)</a></li>
+        {%- endif -%}
+      {%- endif -%}
     {%- endfor %}
   </ul>
 </nav>
