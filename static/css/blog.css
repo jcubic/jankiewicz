@@ -84,7 +84,8 @@ nav.main .bottom {
     background: var(--background);
     padding: 5px 0 5px 5px;
     margin-top: -5px;
-}
+    display: flex;
+    gap: 0.5em;
 }
 nav.main .bottom a {
     padding: 5px;
