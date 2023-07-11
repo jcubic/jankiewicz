@@ -4,9 +4,20 @@
   <meta charset="utf-8">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}"/>
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-  <link rel="stylesheet" href="/{% with_hash "css/blog.css" %}"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <meta name="apple-mobile-web-app-title" content="Jakub Jankiewicz Blog" />
+  <meta name="application-name" content="Jakub Jankiewicz Blog" />
+  <meta name="msapplication-TileColor" content="#b72100" />
+  <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="/{% with_hash "css/blog.css" %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% if lang == "en" -%}
     {% assign originalTitle = title %}
   {%- else -%}
@@ -35,7 +46,7 @@
       <label for="mode_light">
         light
       </label>
-      <input name="mode" type="radio" id="mode_dark" value="dark"/>
+      <input name="mode" type="radio" id="mode_dark" value="dark" />
       <label for="mode_dark">
         dark
       </label>
