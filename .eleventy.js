@@ -49,6 +49,15 @@ module.exports = function(eleventyConfig) {
         }
     });
 
+    eleventyConfig.addUrlTransform(({ url }) => {
+        if (url.match(/^\/blog\/en\/$|^\/([^\/]+)\/blog\/\1\/$/)) {
+            const path = url.replace(/[^\/]+\/$/, '');
+            const result = `${path}index.html`;
+            console.log({path, url, result});
+            return result;
+        }
+    });
+
     eleventyConfig.addFilter('md', function(content) {
         return md.render(content).trim().replace(/(^<p>)|(<\/p>$)/g, '');
     });
