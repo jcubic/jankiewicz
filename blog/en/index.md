@@ -2,6 +2,7 @@
 layout: main_layout.liquid
 title: Jakub Jankiewicz Blog
 description: This is my personal blog, where I write about different topics
+permalink: "/blog/"
 tags: pages_en
 ---
 
