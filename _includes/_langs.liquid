@@ -13,7 +13,7 @@
         {%- if article_lang == lang -%}
           <li class="selected">({{ lang }})</li>
         {%- elsif article_lang -%}
-          <li><a href="{{ article.url }}">({{ article_lang }})</a></li>
+          <li><a href="{{ article.url }}" aria-label="{{ article.data.lang_title }}">({{ article_lang }})</a></li>
         {%- endif -%}
       {%- endfor -%}
       {% assign original = collections[collection] | where: "data.title", originalTitle | first %}
@@ -21,7 +21,7 @@
         {%- if lang == "en" -%}
           <li class="selected">({{ lang }})</li>
         {%- else -%}
-          <li><a href="{{ original.url }}">(en)</a></li>
+          <li><a href="{{ original.url }}" aria-label="{{ original.data.lang_title }}">(en)</a></li>
         {%- endif -%}
       {%- endif -%}
     {%- endfor %}

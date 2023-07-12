@@ -61,14 +61,10 @@
     </div>
   </nav>
   <header class="top">
-    {%- if lang == 'en' -%}
-      <a href="/blog/">
-    {%- else -%}
-      <a href="/{{ lang }}/blog/">
-    {%- endif -%}
-    <pre class="big" aria-hidden="true" role="presentation">{{ figlet.big }}</pre>
-    <pre class="small" aria-hidden="true" role="presentation">{{ figlet.small }}</pre>
-    <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
+    <a href="{% if lang != 'en' %}{{ lang }}{% endif %}/blog/" aria-label="{{ home }}">
+      <pre class="big" aria-hidden="true" role="presentation">{{ figlet.big }}</pre>
+      <pre class="small" aria-hidden="true" role="presentation">{{ figlet.small }}</pre>
+      <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
     </a>
   </header>
   <main>
@@ -102,10 +98,9 @@
    </div>
    <!-- ref: https://www.youtube.com/watch?v=0PxTAn4g20U -->
  </div>
- 
  {% assign cookie_page = lang_suffix | append: "blog/cookies/" %}
  <div class="cookies" id="cookie_banner" style="display: none">
-   <p>{{ cookie.pre }}{% if page.url != cookie_page %} <a href="{{ lang_suffix }}blog/cookies/">{{ cookie.more }}</a>{% endif %}</p>
+   <p>{{ cookie.pre }}{% if page.url != cookie_page %} <a href="{{ lang_suffix }}blog/cookies/" aria-label="{{ cookie.label }}">{{ cookie.more }}</a>{% endif %}</p>
    <p><button id="cookie_ok" class="btn">{{ cookie.ok }}</button></p>
  </div>
  <script type="module" src="/{% with_hash "js/blog.js" %}"></script>
