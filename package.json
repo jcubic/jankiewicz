@@ -4,7 +4,7 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "ELEVENTY_ENV=dev eleventy --serve",
+    "start": "eleventy --serve",
     "build": "eleventy"
   },
   "keywords": [],

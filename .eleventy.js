@@ -6,7 +6,7 @@ const { encode } = require('html-entities');
 const crc32 = require('./crc32');
 const fs = require('fs/promises');
 
-const dev = process.env['ELEVENTY_ENV'] === 'dev';
+const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
 
 function filter_tags(collectionApi, filter_callback) {
     const collections = collectionApi.getAll();
