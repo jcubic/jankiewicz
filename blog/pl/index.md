@@ -1,7 +1,7 @@
 ---
 layout: main_layout.liquid
 title: Blog Jakuba Jankiewicza
-description: To jest mój osobisty blog, gdzie piszę i różnych rzeczach
+description: To jest mój osobisty blog, gdzie piszę o różnych rzeczach które mnie interesują.
 en: Jakub Jankiewicz Blog
 permalink: "/pl/blog/"
 tags: pages_pl
