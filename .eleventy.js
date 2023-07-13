@@ -49,6 +49,20 @@ module.exports = function(eleventyConfig) {
         }
     });
 
+    eleventyConfig.addFilter("translation", (collection, title) => {
+        return collection.filter(page => {
+            if (page.data.title?.startsWith(title)) {
+                return true;
+            }
+            if (page.data.en?.startsWith(title)) {
+                return true;
+            }
+            return false;
+        }).sort((a, b) => {
+            return a.data.lang.localeCompare(b.data.lang);
+        });
+    });
+
     eleventyConfig.addFilter('md', function(content) {
         return md.render(content).trim().replace(/(^<p>)|(<\/p>$)/g, '');
     });
