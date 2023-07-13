@@ -61,7 +61,7 @@
     </div>
   </nav>
   <header class="top">
-    <a href="{% if lang != 'en' %}{{ lang }}{% endif %}/blog/" aria-label="{{ home }}">
+    <a href="{% if lang != 'en' %}/{{ lang }}{% endif %}/blog/" aria-label="{{ home }}">
       <pre class="big" aria-hidden="true" role="presentation">{{ figlet.big }}</pre>
       <pre class="small" aria-hidden="true" role="presentation">{{ figlet.small }}</pre>
       <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
