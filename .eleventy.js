@@ -43,13 +43,19 @@ module.exports = function(eleventyConfig) {
         });
     });
 
-    eleventyConfig.addFilter("dump", obj => {
+    eleventyConfig.addAsyncFilter('has_code', async page => {
+        const md = await fs.readFile(page.inputPath, 'utf8');
+        return /```./.test(md);
+    });
+
+    eleventyConfig.addFilter('dump', obj => {
+        console.log({obj});
         if (obj) {
             return JSON.stringify(Object.keys(obj), null, 2);
         }
     });
 
-    eleventyConfig.addFilter("translation", (collection, title) => {
+    eleventyConfig.addFilter('translation', (collection, title) => {
         return collection.filter(page => {
             if (page.data.title?.startsWith(title)) {
                 return true;
@@ -73,7 +79,7 @@ module.exports = function(eleventyConfig) {
         })
 
         const username = profile_url_array[profile_url_array.length - 1];
-        const user_profile = profile_url_array.join("/");
+        const user_profile = profile_url_array.join('/');
         const data_slug_hash = url_array[url_array.length - 1];
 
         return `<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="${data_slug_hash}" data-user="${username}" style="height: 571px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"><span><a href="${url}">See the pen</a> (<a href="${user_profile}">@${username}</a>) on <a href="https://codepen.io">CodePen</a>.</span></p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>`;

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}"/>
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
@@ -24,19 +23,23 @@
     {% assign originalTitle = en %}
   {%- endif -%}
   {%- for collection in collections.all -%}
-    {%- assign otherArticles = collection | where: "data.en", originalTitle %}
-    {%- assign originalArticles = collection | where: "data.title", originalTitle %}
-    {%- for article in originalArticles -%}
-      {%-if article.data.lang == "en" -%}
+    {%- assign otherArticles = collection | where: "data.en", originalTitle -%}
+    {%- assign originalArticles = collection | where: "data.title", originalTitle -%}
+    {% for article in originalArticles -%}
+      {%- if article.data.lang == "en" -%}
         <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="x-default" />
         <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="{{ article.data.lang }}" />
-      {% endif -%}
-    {% endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
     {%- for article in otherArticles -%}
       <link rel="alternate" href="{{ site.url }}{{ article.url }}" hreflang="{{ article.data.lang }}" />
     {%- endfor -%}
   {%- endfor %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {%- assign has_code = page | has_code %}
+  {% if has_code -%}
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+  {% endif -%}
 </head>
 <body>
   <nav class="main">
