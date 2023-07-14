@@ -127,7 +127,7 @@
    <p>{{ cookie.pre }}{% if page.url != cookie_page %} <a href="{{ lang_suffix }}blog/cookies/" aria-label="{{ cookie.label }}">{{ cookie.more }}</a>{% endif %}</p>
    <p><button id="cookie_ok" class="btn">{{ cookie.ok }}</button></p>
  </div>
- <script type="module" src="/{% with_hash "js/blog.js" %}"></script>
+ <script src="/{% with_hash "js/blog.js" %}"></script>
  {%- include "_analytics" -%}
 </body>
 </html>

@@ -1,3 +1,5 @@
+const comments_defer = defer();
+addEventListener('message', handleMessage);
 if (prefered_dark()) {
     mode_dark.checked = true;
     dark_mode(true);
@@ -318,28 +320,42 @@ function get_col_size(element) {
 function giscus(message) {
     const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe) {
-        const config = {
-            attributes: false,
-            childList: true,
-            subtree: true
-        };
-        if ('MutationObserver' in window) {
-            const observer = new MutationObserver(mutations => {
+        if (!comments_defer.ready) {
+            comments_defer.promise.then(() => {
                 const iframe = document.querySelector('iframe.giscus-frame');
-                if (iframe) {
-                    iframe.addEventListener('load', () => {
-                        giscus_post(iframe, { giscus: message });
-                    });
-                    observer.disconnect();
-                }
+                giscus_post(iframe, message);
             });
-            observer.observe(document.body, config);
         }
         return;
     }
-    giscus_post(iframe, { giscus: message });
+    giscus_post(iframe, message);
+}
+
+function defer() {
+    let result = {
+        ready: false,
+        promise: null,
+        resolve: null,
+        reject: null
+    };
+    result.promise = new Promise((resolve, reject) => {
+        result.resolve = (data) => {
+            result.ready = true;
+            resolve(data);
+        };
+        result.reject = reject;
+    });
+    return result;
 }
 
 function giscus_post(iframe, message) {
     iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
 }
+
+function handleMessage(event) {
+    if (event.origin !== 'https://giscus.app') return;
+    if (!(typeof event.data === 'object' && event.data.giscus)) return;
+    comments_defer.resolve();
+    removeEventListener('message', handleMessage);
+}
+
