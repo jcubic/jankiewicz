@@ -72,6 +72,26 @@
   </header>
   <main>
   {{ content -}}
+  {%- assign article_tag = "articles_" | append: lang -%}
+  {%- if tags contains article_tag %}
+    <script src="https://giscus.app/client.js"
+            data-repo="jcubic/jankiewicz"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwMjg1ODE="
+            data-category="Comment"
+            data-category-id="DIC_kwDOFzAa5c4CX5VR"
+            data-mapping="specific"
+            data-term="{{ title }}"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark"
+            data-lang="{{ lang }}"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  {%- endif -%}
   </main>
   <footer>
     {%- if lang != "en" -%}
