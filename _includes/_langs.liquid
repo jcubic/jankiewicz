@@ -1,10 +1,11 @@
+{%- if lang == "en" -%}
+  {%- assign originalTitle = title -%}
+{%- else -%}
+  {%- assign originalTitle = en -%}
+{%- endif -%}
+{%- assign translations = collections.all | translation: originalTitle -%}
+{% if translations.size > 1  %}
 <nav class="languages">
-  {%- if lang == "en" -%}
-    {%- assign originalTitle = title -%}
-  {%- else -%}
-    {%- assign originalTitle = en -%}
-  {%- endif -%}
-  {% assign translations = collections.all | translation: originalTitle %}
   <ul>
     {%- for translation in translations -%}
       {%- assign article_lang = translation.data.lang %}
@@ -16,3 +17,4 @@
     {%- endfor -%}
   </ul>
 </nav>
+{% endif %}
