@@ -236,9 +236,16 @@ function cookie_resize() {
     cookie_banner.style.removeProperty('right');
 }
 
-
 function dark_mode(toggle) {
-    document.body.dataset.mode = toggle ? 'dark' : 'light';
+    const mode = toggle ? 'dark' : 'light';
+    document.body.dataset.mode = mode;
+    if (comments) {
+        giscus({
+            setConfig: {
+                theme: mode
+            }
+        });
+    }
 }
 
 function prefered_dark() {
@@ -306,4 +313,33 @@ function get_scroll_progress(elm) {
 function get_col_size(element) {
     const { width } = element.getBoundingClientRect();
     return Math.floor(width / char.width);
+}
+
+function giscus(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) {
+        const config = {
+            attributes: false,
+            childList: true,
+            subtree: true
+        };
+        if ('MutationObserver' in window) {
+            const observer = new MutationObserver(mutations => {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe) {
+                    iframe.addEventListener('load', () => {
+                        giscus_post(iframe, { giscus: message });
+                    });
+                    observer.disconnect();
+                }
+            });
+            observer.observe(document.body, config);
+        }
+        return;
+    }
+    giscus_post(iframe, { giscus: message });
+}
+
+function giscus_post(iframe, message) {
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
 }

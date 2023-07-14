@@ -75,6 +75,7 @@
   {%- assign article_tag = "articles_" | append: lang -%}
   {%- if tags contains article_tag %}
     <script src="https://giscus.app/client.js"
+            id="comments"
             data-repo="jcubic/jankiewicz"
             data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwMjg1ODE="
             data-category="Comment"
@@ -84,8 +85,8 @@
             data-strict="0"
             data-reactions-enabled="1"
             data-emit-metadata="0"
+            data-theme="light"
             data-input-position="top"
-            data-theme="dark"
             data-lang="{{ lang }}"
             data-loading="lazy"
             crossorigin="anonymous"
