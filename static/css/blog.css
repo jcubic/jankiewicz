@@ -156,6 +156,11 @@ main header .author::after {
 abbr, acronym {
     cursor: help;
 }
+/* we don't want fancy fonts */
+main code[class*="language-"],
+main pre[class*="language-"] {
+    font-family: monospace;
+}
 /* code markers */
 mark.highlight-line-active {
     background-color: #731a3b;
