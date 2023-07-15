@@ -8,8 +8,12 @@
     "lang": "pl",
     "lang_title": "Tłumaczenie an Polski",
     "permalink": "/pl/blog/{{ page.fileSlug }}/",
-    "source": "[źródło bloga](https://github.com/jcubic/jankiewicz-blog)",
-    "license": "Zawartość tego bloga jest udostępniona na licencji [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)",
-    "home": "Strona główna bloga",
-    "layout": "post_layout.liquid"
+    "layout": "post_layout.liquid",
+    "blog": {
+        "locale": "pl_PL",
+        "home": "Strona główna bloga",
+        "title": "Blog Jakub Jankiewicza",
+        "license": "Zawartość tego bloga jest udostępniona na licencji [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)",
+        "source": "[źródło bloga](https://github.com/jcubic/jankiewicz-blog)"
+    }
 }

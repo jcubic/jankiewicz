@@ -15,8 +15,19 @@
   <meta name="msapplication-TileColor" content="#b72100" />
   <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
+  {%- assign has_card = page | has_card %}
+  <meta property="og:locale" content="{{ blog.locale }}"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ blog.title }}{% endif %}"/>
+  <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ blog.description }}{% endif %}"/>
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+  <meta property="og:site_name" content="{{ blog.title }}"/>
+  {%- if has_card %}
+    <meta property="og:image" content="{{ site.url }}/img/{{ lang }}/{{ page.fileSlug }}.png"/>
+  {%- endif %}
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
   {%- if author and title %}
-    {%- assign has_card = page | has_card %}
     <meta name="twitter:title" content="{{ title }}"/>
     <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"/>
     {%- if has_card %}
@@ -78,7 +89,7 @@
     </div>
   </nav>
   <header class="top">
-    <a href="{% if lang != 'en' %}/{{ lang }}{% endif %}/blog/" aria-label="{{ home }}">
+    <a href="{% if lang != 'en' %}/{{ lang }}{% endif %}/blog/" aria-label="{{ blog.home }}">
       <pre class="big" aria-hidden="true" role="presentation">{{ figlet.big }}</pre>
       <pre class="small" aria-hidden="true" role="presentation">{{ figlet.small }}</pre>
       <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
@@ -114,8 +125,8 @@
     {%- else -%}
       {% assign lang_suffix = "/" %}
     {%- endif %}
-    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jakub.jankiewicz.org{{ lang_suffix }}">Jakub T. Jankiewicz</a> | {{ source | md }}</p>
-   <p>{{ license | md }}</p>
+    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jakub.jankiewicz.org{{ lang_suffix }}">Jakub T. Jankiewicz</a> | {{ blog.source | md }}</p>
+   <p>{{ blog.license | md }}</p>
  </footer>
  <div class="system">
    <!-- ref: https://www.youtube.com/watch?v=W3bF4ASGJWA -->
