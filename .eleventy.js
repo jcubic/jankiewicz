@@ -48,7 +48,17 @@ module.exports = function(eleventyConfig) {
         linkify: true
     };
 
-    const browser = puppeteer.launch();
+    let browser;
+
+    eleventyConfig.on('eleventy.before', async ({ dir, runMode, outputMode }) => {
+        browser = puppeteer.launch({
+            headless: 'new'
+        });
+    });
+
+    eleventyConfig.on('eleventy.after', async ({ dir, results, runMode, outputMode }) => {
+        (await browser).close();
+    });
 
     const svg = fs.readFile('static/img/card.svg', 'utf8').then(svg => {
         return liquid.parse(svg);
