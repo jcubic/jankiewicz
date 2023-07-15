@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-<svg width="298.45001mm" height="158.75mm" viewBox="0 0 298.45001 158.75" version="1.1" id="svg5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg width="317.5mm" height="166.6875mm" viewBox="0 0 317.5 166.6875" version="1.1" id="svg5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <defs id="defs2">
     <clipPath clipPathUnits="userSpaceOnUse" id="clipPath940">
       <circle style="fill:#000000;fill-rule:evenodd;stroke-width:0.13734;stop-color:#000000" id="circle942" cx="6.196106" cy="125.16134" r="8.4665003" />
     </clipPath>
   </defs>
-  <rect style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000" id="rect28786" width="297.85968" height="158.15968" x="0.29516125" y="0.29516199" rx="0" ry="0" />
-  <rect style="fill:#02000b;fill-opacity:1;fill-rule:evenodd;stroke-width:0.298417;stop-color:#000000" id="rect966" width="271.60532" height="131.11079" x="13.422359" y="13.819607" rx="7.4956741" ry="7.4956741" />
-  <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12351px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:0.25441" x="54.442673" y="122.7668" id="text2551"><tspan id="tspan2549" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New';fill:#dddddd;fill-opacity:1;stroke-width:0.25441" x="54.442673" y="122.7668">Jakub T. Jankiewicz • Jan 20</tspan></text>
-  <image width="16.933332" height="16.933332" preserveAspectRatio="none" xlink:href="avatars/jcubic.jpg" id="image832" x="-2.2705605" y="116.69467" clip-path="url(#clipPath940)" transform="matrix(1.3843576,0,0,1.3843576,29.20659,-52.699524)" />
-  <circle style="fill:none;fill-rule:evenodd;stroke:#dddddd;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#dddddd" id="circle1050" cx="37.784225" cy="120.56853" r="11.720664" />
+  <rect style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.280075;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000" id="rect28786" width="317.21994" height="166.40742" x="0.14003751" y="0.14003751" rx="0" ry="0" />
+  <rect style="fill:#02000b;fill-opacity:1;fill-rule:evenodd;stroke-width:0.315891;stop-color:#000000" id="rect966" width="289.25909" height="137.94798" x="14.120476" y="14.369757" rx="6.0942664" ry="6.0942664" />
+  <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12351px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:0.25441" x="53.962246" y="130.70401" id="text2551"><tspan id="tspan2549" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New';fill:#dddddd;fill-opacity:1;stroke-width:0.25441" x="53.962246" y="130.70401">Jakub T. Jankiewicz • Jan 20</tspan></text>
+  <image width="16.933332" height="16.933332" preserveAspectRatio="none" xlink:href="avatars/jcubic.jpg" id="image832" x="-2.2705605" y="116.69467" clip-path="url(#clipPath940)" transform="matrix(1.3843576,0,0,1.3843576,28.726161,-44.762308)" />
+  <circle style="fill:none;fill-rule:evenodd;stroke:#dddddd;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#dddddd" id="circle1050" cx="37.303799" cy="128.50574" r="11.720664" />
   <foreignObject width="246.58748" height="75.381409" x="25.931271" y="26.328524">
-    <div xmlns="http://www.w3.org/1999/xhtml"
-         style="width: 246.58748; color: #dddddd; height: 196px; font-size:17.5478px; line-height:1.25; font-family:monospace;">
-      <p style="margin: 0">Welcome to my new Eleventy blog</p>
-    </div>
+    <xhtml:div style="width: 246.58748; color: #dddddd; height: 196px; font-size:17.5478px; line-height:1.25; font-family:monospace;">
+      <xhtml:p style="margin: 0">Welcome to my new Eleventy blog</xhtml:p>
+    </xhtml:div>
   </foreignObject>
 </svg>
