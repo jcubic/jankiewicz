@@ -15,6 +15,7 @@ that don't fit to my Polish blog ["Głównie JavaScript"](https://jcubic.pl),
 (Mostly JavaScript).
 
 <!-- more -->
+{%- social -%}
 
 The reason why I decided to start this blog, was my personal brand, on which
 I would like to work more. I wanted to have something that will be easy identified

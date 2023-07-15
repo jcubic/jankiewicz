@@ -4,9 +4,29 @@ const abbr = require('markdown-it-abbr');
 const { minify } = require('html-minifier-terser');
 const { encode } = require('html-entities');
 const crc32 = require('./crc32');
+const path = require('path');
 const fs = require('fs/promises');
+const fm = require('front-matter');
+const { Liquid } = require('liquidjs');
+const puppeteer = require('puppeteer');
+
+const liquid = new Liquid()
 
 const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
+
+function formatDate(lang, date) {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(lang, options);
+}
+
+async function path_exists(path) {
+    try {
+        await access(path, fs.constants.R_OK | fs.constants.W_OK);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
 
 function filter_tags(collectionApi, filter_callback) {
     const collections = collectionApi.getAll();
@@ -27,6 +47,12 @@ module.exports = function(eleventyConfig) {
         html: true,
         linkify: true
     };
+
+    const browser = puppeteer.launch();
+
+    const svg = fs.readFile('static/img/card.svg', 'utf8').then(svg => {
+        return liquid.parse(svg);
+    });
 
     const md = markdownIt(options).use(abbr);
     eleventyConfig.setLibrary('md', md);
@@ -116,6 +142,47 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter('rtrim', str => str.replace(/\s+$/, ''));
+
+    eleventyConfig.addTransform('image', async function(content) {
+        const md = await fs.readFile(this.inputPath, 'utf8');
+        const { attributes: { date, title, tags, author } } = fm(md);
+        if (author && date) {
+            //console.log({date, title, tags, author, data: this});
+        }
+        return content;
+    });
+
+    eleventyConfig.addLiquidShortcode('social', async function() {
+        const { title, author: username, date, lang, users } = this.ctx.environments
+        const svg_path = path.join(__dirname, 'static/img');
+        const output_svg = await liquid.render(await svg, {
+            username,
+            fullname: users[username].name,
+            title,
+            path: svg_path,
+            date: formatDate(lang, date)
+        });
+        const svg_fullname = path.join(__dirname, 'tmp.svg');
+        await fs.writeFile(svg_fullname, output_svg);
+        const directory = `_site/img/${lang}/`;
+        if (!await path_exists(directory)) {
+           await fs.mkdir(directory, { recursive: true });
+        }
+        const { inputPath, fileSlug } = this.page;
+        const filename = `${directory}${fileSlug}.png`;
+        const page = await (await browser).newPage();
+        await page.setViewport({
+            height: 630,
+            width: 1200
+        });
+        await page.goto('file://' + svg_fullname);
+
+        const imageBuffer = await page.screenshot({});
+
+        await fs.writeFile(filename, imageBuffer);
+
+        console.log(`[11ty] Writing ${filename} from ${inputPath} (shortcode)`);
+    });
 
     eleventyConfig.addTransform('minification', async function(content) {
         if (dev) {
