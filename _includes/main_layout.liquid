@@ -15,6 +15,20 @@
   <meta name="msapplication-TileColor" content="#b72100" />
   <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
+  {%- if author and title %}
+    {%- assign has_card = page | has_card %}
+    <meta name="twitter:title" content="{{ title }}"/>
+    <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"/>
+    {%- if has_card %}
+      <meta name="twitter:image" content="{{ site.url }}/blog/img/{{ lang }}/{{ page.fileSlug }}.png"/>
+      <meta name="twitter:image:alt" content="Simple image that shows title author and date of the article" />
+      <meta name="twitter:card" content="summary_large_image"/>
+    {%- else %}
+      <meta name="twitter:card" content="summary"/>
+    {%- endif %}
+    <meta name="twitter:site" content="@{{ site.twitter }}"/>
+    <meta name="twitter:creator" content="@{% if users[author].twitter %}{{ users[author].twitter }}{% else %}{{ twitter }}{% endif %}"/>
+  {%- endif %}
   <link rel="stylesheet" href="/{% with_hash "css/blog.css" %}" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% if lang == "en" -%}

@@ -84,6 +84,11 @@ module.exports = function(eleventyConfig) {
         return /```./.test(md);
     });
 
+    eleventyConfig.addAsyncFilter('has_card', async page => {
+        const md = await fs.readFile(page.inputPath, 'utf8');
+        return /{%-?\s+card\s+-?%}/.test(md);
+    });
+
     eleventyConfig.addFilter('dump', obj => {
         console.log({obj});
         if (obj) {
@@ -153,16 +158,7 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addFilter('rtrim', str => str.replace(/\s+$/, ''));
 
-    eleventyConfig.addTransform('image', async function(content) {
-        const md = await fs.readFile(this.inputPath, 'utf8');
-        const { attributes: { date, title, tags, author } } = fm(md);
-        if (author && date) {
-            //console.log({date, title, tags, author, data: this});
-        }
-        return content;
-    });
-
-    eleventyConfig.addLiquidShortcode('social', async function() {
+    eleventyConfig.addLiquidShortcode('card', async function() {
         const { title, author: username, date, lang, users } = this.ctx.environments
         const svg_path = path.join(__dirname, 'static/img');
         const output_svg = await liquid.render(await svg, {
@@ -194,6 +190,8 @@ module.exports = function(eleventyConfig) {
         console.log(`[11ty] Writing ${filename} from ${inputPath} (shortcode)`);
     });
 
+
+
     eleventyConfig.addTransform('minification', async function(content) {
         if (dev) {
             return content;
@@ -208,10 +206,8 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addGlobalData('site', {
-        url: 'https://jakub.jankiewicz.org'
-    });
-
-    return {
+        url: 'https://jakub.jankiewicz.org',
+        twitter: 'jcubic',
         dev
-    };
+    });
 };
