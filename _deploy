@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd _site
-
-scp -r * atthost:~/me/
