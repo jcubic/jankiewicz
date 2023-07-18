@@ -10,9 +10,9 @@
     "lang_title": "Translation to English",
     "layout": "post_layout.liquid",
     "blog": {
+        "locale": "en_US",
         "title": "Jakub Jankiewicz Blog",
         "home": "Blog home page",
-        "locale": "en_US",
         "description": "This is Jakub Jankiewicz personal blog",
         "source": "[blog source](https://github.com/jcubic/jankiewicz-blog)",
         "license": "The content of this blog is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license"
