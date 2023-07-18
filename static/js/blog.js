@@ -241,7 +241,7 @@ function cookie_resize() {
 function dark_mode(toggle) {
     const mode = toggle ? 'dark' : 'light';
     document.body.dataset.mode = mode;
-    if (comments) {
+    if (typeof comments !== 'undefined') {
         giscus({
             setConfig: {
                 theme: mode
