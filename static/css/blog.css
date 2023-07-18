@@ -67,6 +67,7 @@ nav.main {
 }
 nav.main pre {
     flex-grow: 1;
+    contain: paint;
 }
 header.top a, header.top a:hover {
     text-decoration: none;
