@@ -2,7 +2,6 @@ const comments_defer = defer();
 addEventListener('message', handleMessage);
 if (prefered_dark()) {
     mode_dark.checked = true;
-    console.log('dark');
     dark_mode(true);
 } else {
     dark_mode(false);
