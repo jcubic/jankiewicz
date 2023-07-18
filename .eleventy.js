@@ -74,8 +74,8 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addCollection('langs', function(collectionApi) {
-        return filter_tags(collectionApi, key => key.startsWith('index_')).map(tag => {
-            return tag.replace(/index_/, '');
+        return filter_tags(collectionApi, key => key.startsWith('pages_')).map(tag => {
+            return tag.replace(/pages_/, '');
         });
     });
 

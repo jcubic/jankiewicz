@@ -1,0 +1,14 @@
+---
+permalink: "/sitemap_index.xml"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://jakub.jankiewicz.org/sitemap.xml</loc>
+  </sitemap>
+  {%- for lang in collections.langs -%}
+  <sitemap>
+    <loc>https://jakub.jankiewicz.org{%- if lang != 'en' -%}/{{ lang }}{% endif %}/blog/sitemap.xml</loc>
+  </sitemap>
+  {%- endfor -%}
+</sitemapindex>

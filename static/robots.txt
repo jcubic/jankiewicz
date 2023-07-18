@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://jakub.jankiewicz.org/sitemap.xml
+Sitemap: https://jakub.jankiewicz.org/sitemap_index.xml
