@@ -2,7 +2,10 @@ const comments_defer = defer();
 addEventListener('message', handleMessage);
 if (prefered_dark()) {
     mode_dark.checked = true;
+    console.log('dark');
     dark_mode(true);
+} else {
+    dark_mode(false);
 }
 
 $$('.dark-mode').on('change', function(e) {
@@ -241,10 +244,10 @@ function cookie_resize() {
 function dark_mode(toggle) {
     const mode = toggle ? 'dark' : 'light';
     document.body.dataset.mode = mode;
-    if (typeof comments !== 'undefined') {
+    if ('comments' in window) {
         giscus({
             setConfig: {
-                theme: mode
+                theme: `${location.origin}/css/comments-${mode}.css`
             }
         });
     }

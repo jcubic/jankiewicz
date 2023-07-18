@@ -205,8 +205,10 @@ module.exports = function(eleventyConfig) {
         return content; // no change done.
     });
 
+    const url = dev ? 'https://localhost:8080' : 'https://jakub.jankiewicz.org';
+
     eleventyConfig.addGlobalData('site', {
-        url: 'https://jakub.jankiewicz.org',
+        url,
         twitter: 'jcubic',
         dev
     });

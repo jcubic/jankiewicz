@@ -1,0 +1,23 @@
+{{content}}
+html {
+    font-family: monospace;
+    font-size: 14px;
+}
+.gsc-comment-box-textarea,
+.gsc-comment-box:not(.gsc-comment-box-is-reply),
+#__next :is(.border) {
+    border-width: var(--border-width);
+}
+.gsc-comment-box-textarea-extras {
+    border-width: 0 var(--border-width) var(--border-width);
+}
+.gsc-comment-box-tabs {
+    border-bottom-width: var(--border-width);
+}
+#__next :is(.border-b-0) {
+    border-bottom-width: 0;
+}
+.gsc-reply-box {
+    border-top-width: var(--border-width);
+    padding: 1rem;
+}
