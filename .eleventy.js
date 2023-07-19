@@ -92,6 +92,9 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter('article', tags => {
+        if (!tags) {
+            return;
+        }
         const tag = tags.find(tag => tag.startsWith('articles_'));
         if (tag) {
             return tag.replace(/articles_/, '');
