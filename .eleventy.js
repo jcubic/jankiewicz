@@ -12,6 +12,8 @@ const puppeteer = require('puppeteer');
 
 const liquid = new Liquid();
 
+const eleventy = require('./node_modules/@11ty/eleventy/package.json');
+
 const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
 
 function formatDate(lang, date) {
@@ -222,6 +224,7 @@ module.exports = function(eleventyConfig) {
         url,
         twitter: 'jcubic',
         name: "Jakub Jankiewicz Blog",
+        eleventy,
         dev
     });
 };
