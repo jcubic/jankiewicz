@@ -223,7 +223,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addGlobalData('site', {
         url,
         twitter: 'jcubic',
-        name: "Jakub Jankiewicz Blog",
         eleventy,
         repo: 'https://github.com/jcubic/jankiewicz',
         dev
