@@ -10,7 +10,7 @@ const fm = require('front-matter');
 const { Liquid } = require('liquidjs');
 const puppeteer = require('puppeteer');
 
-const liquid = new Liquid()
+const liquid = new Liquid();
 
 const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
 
@@ -89,10 +89,23 @@ module.exports = function(eleventyConfig) {
         return /{%-?\s+card\s+-?%}/.test(md);
     });
 
+    eleventyConfig.addFilter('article', tags => {
+        const tag = tags.find(tag => tag.startsWith('articles_'));
+        if (tag) {
+            return tag.replace(/articles_/, '');
+        }
+    });
+
     eleventyConfig.addFilter('dump', obj => {
         console.log({obj});
         if (obj) {
             return JSON.stringify(Object.keys(obj), null, 2);
+        }
+    });
+
+    eleventyConfig.addFilter('jsonify', obj => {
+        if (obj) {
+            return JSON.stringify(obj);
         }
     });
 
@@ -190,8 +203,6 @@ module.exports = function(eleventyConfig) {
         console.log(`[11ty] Writing ${filename} from ${inputPath} (shortcode)`);
     });
 
-
-
     eleventyConfig.addTransform('minification', async function(content) {
         if (dev) {
             return content;
@@ -205,11 +216,12 @@ module.exports = function(eleventyConfig) {
         return content; // no change done.
     });
 
-    const url = dev ? 'https://localhost:8080' : 'https://jakub.jankiewicz.org';
+    const url = dev ? 'http://localhost:8080' : 'https://jakub.jankiewicz.org';
 
     eleventyConfig.addGlobalData('site', {
         url,
         twitter: 'jcubic',
+        name: "Jakub Jankiewicz Blog",
         dev
     });
 };

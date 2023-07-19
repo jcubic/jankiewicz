@@ -16,6 +16,7 @@
   <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
   <meta name="theme-color" content="#ffffff" />
   {%- assign has_card = page | has_card %}
+  {% assign social_image = site.url | append: "/img/" | append: lang | append: "/" | append: page.fileSlug | append: ".png" -%}
   <meta property="og:locale" content="{{ blog.locale }}"/>
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ blog.title }}{% endif %}"/>
@@ -23,7 +24,7 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
   <meta property="og:site_name" content="{{ blog.title }}"/>
   {%- if has_card %}
-    <meta property="og:image" content="{{ site.url }}/img/{{ lang }}/{{ page.fileSlug }}.png"/>
+    <meta property="og:image" content="{{ social_image }}"/>
   {%- endif %}
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
@@ -31,7 +32,7 @@
     <meta name="twitter:title" content="{{ title }}"/>
     <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"/>
     {%- if has_card %}
-      <meta name="twitter:image" content="{{ site.url }}/img/{{ lang }}/{{ page.fileSlug }}.png"/>
+      <meta name="twitter:image" content="{{ social_image }}"/>
       <meta name="twitter:image:alt" content="Simple image that shows title author and date of the article" />
       <meta name="twitter:card" content="summary_large_image"/>
     {%- else %}
@@ -64,6 +65,38 @@
   {%- assign has_code = page | has_code %}
   {% if has_code -%}
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+  {% endif -%}
+  {%- assign article_lang = tags | article -%}
+  {% if article_lang == lang  -%}
+  <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "BlogPosting",
+       "publisher": {
+           "@type": "Organization",
+           "name": "{{ blog.title }}",
+           "url": "{{ site.url }}{% if lang != "en" -%}/{{ lang }}{% endif %}/blog/",
+           "logo": {
+               "@type": "ImageObject",
+               "url": "{{ site.url }}/favicon/android-chrome-512x512.png"
+           }
+       },
+       "author": {{ users[author].ld | jsonify }},
+       "headline": "{{ title }}",
+       "image": {
+           "@type": "ImageObject",
+           "url": "{{ social_image }}",
+           "width": {{ 1200 }},
+           "height": {{ 630 }}
+       },
+       "description": "{{ page.description }}",
+       "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https://google.com/article"
+       },
+       "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+   }
+  </script>
   {% endif -%}
 </head>
 <body>
