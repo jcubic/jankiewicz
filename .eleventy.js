@@ -225,6 +225,7 @@ module.exports = function(eleventyConfig) {
         twitter: 'jcubic',
         name: "Jakub Jankiewicz Blog",
         eleventy,
+        repo: 'https://github.com/jcubic/jankiewicz',
         dev
     });
 };

@@ -138,7 +138,7 @@
     {%- else -%}
       {% assign lang_suffix = "/" %}
     {%- endif %}
-    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jakub.jankiewicz.org{{ lang_suffix }}">Jakub T. Jankiewicz</a> | {{ blog.source | md }}</p>
+    <p>Copyright (c) {{ "now" | date: "%Y" }} <a href="https://jakub.jankiewicz.org{{ lang_suffix }}">Jakub T. Jankiewicz</a> | <a href="{{ site.repo }}/blob/master/{{ page.inputPath }}">{{ blog.source }}</a></p>
    <p>{{ blog.license | md }}</p>
  </footer>
  <div class="system">
