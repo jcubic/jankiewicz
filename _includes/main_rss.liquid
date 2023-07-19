@@ -5,11 +5,11 @@
     {%- if lang == "en" -%}
       {% assign base_url = site.url | append: "/blog/" %}
     {%- else -%}
-      {% assign base_url = lang | prepend: "/" | prepend: site.url %}
+      {% assign base_url = lang | append: "/blog" | prepend: "/" | prepend: site.url %}
     {%- endif -%}
     {{- content | rtrim }}
     <link>{{ base_url }}</link>
-    <atom:link href="{{ base_url }}rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ base_url }}/rss.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>{{ collections[collection] | lastDate | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
     {%- for post in collections[collection] reversed | slice: 0, 10 -%}
       {% assign post_url = site.url | append: post.url %}
