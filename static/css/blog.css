@@ -217,51 +217,8 @@ header.top pre {
     display: none;
     user-select: none;
 }
-main header h1 {
+main header h1, main .languages {
     --indent: 4ch;
-}
-@media only screen and (min-width: 1150px) {
-    header.top .big {
-        display: block;
-    }
-}
-@media only screen and (max-width: 1150px) and (min-width: 640px) {
-    header.top .wrap {
-        display: block;
-    }
-}
-@media only screen and (max-width: 640px) {
-    header.top .small {
-        display: block;
-    }
-    main header h1 {
-        display: flex;
-        flex-direction: column;
-        padding-left: calc(var(--indent) + 6ch);
-    }
-    main header h1::before {
-        text-indent: calc((var(--indent) + 6ch) * -1);
-    }
-    main header h1::after {
-        text-indent: calc(var(--indent) * -1);
-    }
-}
-@media only screen and (max-width: 800px) {
-    .cookies, nav.main {
-        font-size: 14px;
-    }
-}
-@media only screen and (max-width: 510px) {
-    main header .author::after {
-        display: block;
-        content: "// :: </author>";
-        font-weight: bold;
-    }
-}
-@media only screen and (max-width: 320px) {
-    header.top {
-        display: none;
-    }
 }
 main ul li {
     list-style: none;
@@ -499,4 +456,61 @@ body.matrix {
     width: 14px;
     height: 14px;
     border: 2px solid var(--background);
+}
+@media only screen and (min-width: 1150px) {
+    header.top .big {
+        display: block;
+    }
+}
+@media only screen and (max-width: 1150px) and (min-width: 640px) {
+    header.top .wrap {
+        display: block;
+    }
+}
+@media only screen and (max-width: 640px) {
+    header.top .small {
+        display: block;
+    }
+    main header h1 {
+        display: flex;
+        flex-direction: column;
+        padding-left: calc(var(--indent) + 6ch);
+    }
+    main .languages ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    main .languages ul li {
+        margin-left: var(--indent);
+    }
+    main .languages ul::after {
+        content: "// :: </languages>";
+        text-indent: calc((var(--indent) + 2ch) * -1);
+    }
+    main header h1::before {
+        text-indent: calc((var(--indent) + 6ch) * -1);
+    }
+    main header h1::after {
+        text-indent: calc(var(--indent) * -1);
+    }
+    main header .author::after {
+        display: block;
+        content: "// :: </author>";
+        font-weight: bold;
+    }
+    main header h1::after {
+        text-indent: calc((var(--indent) + 6ch) * -1);
+        content: "// :: </title>";
+    }
+}
+@media only screen and (max-width: 800px) {
+    .cookies, nav.main {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    header.top {
+        display: none;
+    }
 }
