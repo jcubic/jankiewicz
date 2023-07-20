@@ -206,6 +206,7 @@ module.exports = function(eleventyConfig) {
         await fs.writeFile(filename, imageBuffer);
 
         console.log(`[11ty] Writing ${filename} from ${inputPath} (shortcode)`);
+        await page.close();
     });
 
     eleventyConfig.addTransform('minification', async function(content) {
