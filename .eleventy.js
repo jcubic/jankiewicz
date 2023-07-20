@@ -16,6 +16,8 @@ const eleventy = require('./node_modules/@11ty/eleventy/package.json');
 
 const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
 
+const delay = time => new Promise(resolve => setTimeout(resolve, time));
+
 function formatDate(lang, date) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString(lang, options);
@@ -200,6 +202,7 @@ module.exports = function(eleventyConfig) {
             width: 1200
         });
         await page.goto('file://' + svg_fullname);
+        await delay(100);
 
         const imageBuffer = await page.screenshot({});
 
