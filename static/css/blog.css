@@ -56,6 +56,11 @@ span[id] {
     --background: #1D1E22;
     --link-hover: #4C7CEB;
 }
+:root:has(#mode_dark:checked) {
+    --color: #ccc;
+    --background: #1D1E22;
+    --link-hover: #4C7CEB;
+}
 nav.main {
     top: 0;
     background: var(--background);
@@ -515,10 +520,7 @@ body.matrix {
     }
 }
 @container style(--no-js: true) {
-    .system, .main .radio {
+    .system {
         display: none;
-    }
-    nav.main .bottom {
-        top: 0;
     }
 }
