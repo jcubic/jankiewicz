@@ -12,8 +12,6 @@ const puppeteer = require('puppeteer');
 
 const liquid = new Liquid();
 
-const eleventy = require('./node_modules/@11ty/eleventy/package.json');
-
 const dev = process.env.ELEVENTY_RUN_MODE !== 'build';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
@@ -230,7 +228,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addGlobalData('site', {
         url,
         twitter: 'jcubic',
-        eleventy,
         repo: 'https://github.com/jcubic/jankiewicz',
         dev
     });
