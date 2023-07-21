@@ -160,6 +160,13 @@
    </div>
    <!-- ref: https://www.youtube.com/watch?v=0PxTAn4g20U -->
  </div>
+ <noscript>
+   <style>
+    :root {
+        --no-js: true;
+    }
+   </style>
+ </noscript>
  {% assign cookie_page = lang_suffix | append: "blog/cookies/" %}
  <div class="cookies" id="cookie_banner" style="display: none">
    <p>{{ cookie.pre }}{% if page.url != cookie_page %} <a href="{{ lang_suffix }}blog/cookies/" aria-label="{{ cookie.label }}">{{ cookie.more }}</a>{% endif %}</p>

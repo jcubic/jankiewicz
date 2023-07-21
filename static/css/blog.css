@@ -514,3 +514,11 @@ body.matrix {
         display: none;
     }
 }
+@container style(--no-js: true) {
+    .system, .main .radio {
+        display: none;
+    }
+    nav.main .bottom {
+        top: 0;
+    }
+}
