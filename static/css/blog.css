@@ -51,7 +51,7 @@ span[id] {
     top: -2em;
     visibility: hidden;
 }
-[data-mode="dark"] {
+[data-mode="dark"], #dark_no_js:target {
     --color: #ccc;
     --background: #1D1E22;
     --link-hover: #4C7CEB;
