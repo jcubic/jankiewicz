@@ -25,9 +25,9 @@
   <meta property="og:site_name" content="{{ blog.title }}"/>
   {%- if has_card %}
     <meta property="og:image" content="{{ social_image }}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
   {%- endif %}
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
   {%- if author and title %}
     <meta name="twitter:title" content="{{ title }}"/>
     <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"/>
