@@ -81,6 +81,12 @@
            "url": "{{ site.url }}{% if lang != "en" -%}/{{ lang }}{% endif %}/blog/",
            "logo": {
                "@type": "ImageObject",
+               "creator": {
+                   "@type": "Person",
+                   "@id": "https://jakub.jankiewicz.org",
+                   "name": "Jakub Jankiewicz",
+                   "alternateName": "Jakub T. Jankiewicz"
+               },
                "url": "{{ site.url }}/favicon/android-chrome-512x512.png"
            }
        },
@@ -89,6 +95,7 @@
        "image": {
            "@type": "ImageObject",
            "url": "{{ social_image }}",
+           "license": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
            "width": {{ 1200 }},
            "height": {{ 630 }}
        },
