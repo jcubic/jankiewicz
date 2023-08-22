@@ -7,6 +7,30 @@ if (prefered_dark()) {
     dark_mode(false);
 }
 
+const bs = new BroadcastChannel('sw');
+
+import('https://cdn.jsdelivr.net/npm/@jcubic/wayne').then(({ rpc }) => {
+    rpc(bs, {
+        theme: () => prefered_dark() ? 'dark' : 'light'
+    });
+});
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(function(reg) {
+            reg.addEventListener('updatefound', function() {
+                var installingWorker = reg.installing;
+                console.log('A new service worker is being installed:',
+                            installingWorker);
+            });
+            // registration worked
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function(error) {
+            // registration failed
+            console.log('Registration failed with ' + error);
+        });
+}
+
 $$('.dark-mode').on('change', function(e) {
     if ('vibrate' in window.navigator) {
         window.navigator.vibrate(100);

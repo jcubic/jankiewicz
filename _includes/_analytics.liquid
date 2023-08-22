@@ -1,5 +1,5 @@
 {%- if not site.dev %}
-  <!-- Start Open Web Analytics Tracker -->
+<!-- Start Open Web Analytics Tracker -->
   <script type="text/javascript">
    //<![CDATA[
    var owa_baseUrl = 'https://stats.jcubic.pl/';
@@ -16,4 +16,6 @@
    //]]>
   </script>
   <!-- End Open Web Analytics Code -->
-{% endif -%}
+{% else %}
+<!-- OWA -->
+{%- endif -%}
