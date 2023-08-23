@@ -36,8 +36,7 @@ const reset = 'https://cdn.jsdelivr.net/npm/the-new-css-reset@1.9.0/css/reset.cs
 const bs = new BroadcastChannel('sw');
 
 const mime_hack = {
-    '.js': 'application/x-javascript',
-    '.css': 'text/css'
+    '.js': 'application/x-javascript'
 };
 
 app.get('*', async function(req, res) {
