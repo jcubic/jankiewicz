@@ -35,6 +35,11 @@ const reset = 'https://cdn.jsdelivr.net/npm/the-new-css-reset@1.9.0/css/reset.cs
 
 const bs = new BroadcastChannel('sw');
 
+const mime_hack = {
+    '.js': 'application/x-javascript',
+    '.css': 'text/css'
+};
+
 app.get('*', async function(req, res) {
     const url = new URL(req.url);
     const extension = path.extname(url.pathname);
@@ -50,7 +55,7 @@ app.get('*', async function(req, res) {
             }),
             wayne.send(bs, 'theme', [])
         ]);
-        const valid_mime = mime.getType(extension);
+        const valid_mime = mime_hack[extension] ?? mime.getType(extension);
         if (content_type.replace(/;.*$/, '') === valid_mime) {
             const analytics = await fetch('/blog/analytics.html').then(res => res.text());
             const filename = path.basename(req.url);
