@@ -19,7 +19,6 @@ a:hover {
 a, a:visited {
     text-underline-offset: 0.25em;
     color: var(--color);
-    display: inline-block;
 }
 a:hover {
     text-decoration: none;
@@ -166,6 +165,10 @@ abbr, acronym {
     margin-left: auto;
     margin-right: auto;
 }
+p code {
+    color: white;
+    font-weight: bold;
+}
 /* we don't want fancy fonts */
 main code[class*="language-"],
 main pre[class*="language-"] {
@@ -173,6 +176,7 @@ main pre[class*="language-"] {
 }
 main pre:not([class]) {
     font-family: monospace;
+    color: #f8f8f2;
     background: #272822;
     padding: 1em;
     margin: 0.5em 0;

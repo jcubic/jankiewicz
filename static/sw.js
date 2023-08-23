@@ -51,7 +51,7 @@ app.get('*', async function(req, res) {
             wayne.send(bs, 'theme', [])
         ]);
         const valid_mime = mime.getType(extension);
-        if (content_type.replace(/;.*/, '') === valid_mime) {
+        if (content_type.replace(/;.*$/, '') === valid_mime) {
             const analytics = await fetch('/blog/analytics.html').then(res => res.text());
             const filename = path.basename(req.url);
             const link = [reset, styles[theme]].map(url => {
@@ -76,7 +76,7 @@ self.addEventListener('activate', (event) => {
 });
 
 function escape(html) {
-  return html.replace(/</g, '&lt;').replace('>', '&gt;');
+  return html.replace(/</g, '&lt;');
 }
 
 function match_language(language) {
