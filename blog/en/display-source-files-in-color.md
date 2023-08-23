@@ -271,6 +271,52 @@ if (content_type.replace(/;.*$/, '') === valid_mime) {
 
 And that's it. If you want to see the whole code just open this link: [sw.js](/sw.js).
 
+**UPDATE**:
+
+After the code was published and article was written. I was testing if the hack works the
+same on my blog as locally with [Eleventy](https://www.11ty.dev/) local sever.
+
+And it seems that it didn't work when I opened JavaScript files. I was investigating,
+and this time used Dev Tools Debugger and add break point into this line:
+
+```javascript
+const valid_mime = mime.getType(extension);
+if (content_type.replace(/;.*$/, '') === valid_mime) {
+
+}
+```
+
+I was stepping into next line and it turns out that my server Atthost returns
+
+```
+Content-Type: application/x-javascript
+```
+
+But MIME library expects:
+
+```
+Content-Type: application/javascript
+```
+
+Which is valid JavaScript MIME.
+
+I was investigating how to change the mime in Apache, nothing was working. So
+I've contacted the support about this.
+
+I also added a hack to my hack to use my own MIME types as a workaround:
+
+```javascript
+const mime_hack = {
+    '.js': 'application/x-javascript',
+    '.css': 'text/css'
+};
+
+const valid_mime = mime_hack[extension] ?? mime.getType(extension);
+```
+
+This time the code did work and I've got JavaScript file syntax highlighted.
+
+
 If you find this article interesting you may want to follow me on Twitter:
 [@jcubic](https://jcu.bi/twitter) and on [LinkedIn](https://jcu.bi/ln).
 
