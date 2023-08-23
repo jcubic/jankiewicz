@@ -290,14 +290,25 @@ blockquote::before {
     margin-left: calc(-1ch - 0.3em);
     width: 1ch;
     position: absolute;
-    font-size: 1em;
+    font-size: 1.13em;
     left: 0;
     top: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
-<text y="0.9em" font-size="90" font-family="monospace">&gt;</text>\
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+<text y="0.9em" font-size="90" fill="%23152032" font-family="monospace">&gt;</text>\
 </svg>');
-    background-size: 1em 1.145em;
+    background-size: 1em 1.5em;
+}
+[data-mode="dark"] blockquote::before,
+#dark_no_js:target blockquote::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+<text y="0.9em" font-size="90" fill="%23ccc" font-family="monospace">&gt;</text>\
+</svg>');
+}
+:root:has(#mode_dark:checked) blockquote::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+<text y="0.9em" font-size="90" fill="%23ccc" font-family="monospace">&gt;</text>\
+</svg>');
 }
 ul {
     list-style: none;
