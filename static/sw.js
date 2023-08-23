@@ -26,6 +26,8 @@ pre[class*=language-] {
     height: 100%;
     overflow: auto;
     box-sizing: border-box;
+    border-radius: 0;
+    white-space: pre-wrap;
 }
 </style>`;
 
@@ -58,7 +60,6 @@ app.get('*', async function(req, res) {
             const grammar = Prism.languages[language];
             const tokens = Prism.tokenize(escape(code), grammar);
             const output = Prism.Token.stringify(tokens, language);
-            console.log({analytics});
             res.html(html(
                 filename.replace(/\?.*$/, ''),
                 `${link}${style}`,
