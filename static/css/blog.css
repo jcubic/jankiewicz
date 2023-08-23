@@ -162,6 +162,10 @@ main header .author::after {
 abbr, acronym {
     cursor: help;
 }
+.twitter-tweet {
+    margin-left: auto;
+    margin-right: auto;
+}
 /* we don't want fancy fonts */
 main code[class*="language-"],
 main pre[class*="language-"] {
