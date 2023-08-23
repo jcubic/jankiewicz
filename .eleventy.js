@@ -1,4 +1,5 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const embeds = require('eleventy-plugin-embed-everything');
 const markdownIt = require('markdown-it');
 const abbr = require('markdown-it-abbr');
 const { minify } = require('html-minifier-terser');
@@ -65,6 +66,8 @@ module.exports = function(eleventyConfig) {
     const svg = fs.readFile('static/img/card.svg', 'utf8').then(svg => {
         return liquid.parse(svg);
     });
+
+    eleventyConfig.addPlugin(embeds);
 
     const md = markdownIt(options).use(abbr);
     eleventyConfig.setLibrary('md', md);

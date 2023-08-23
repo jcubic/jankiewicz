@@ -13,6 +13,7 @@
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "eleventy-plugin-embed-everything": "^1.16.0",
     "eleventy-xml-plugin": "^0.1.0",
     "figlet": "^1.6.0",
     "front-matter": "^4.0.2",
