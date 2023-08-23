@@ -19,7 +19,7 @@ layout: main_layout.liquid
   {{ content }}
 </section>
 {%- assign article_tag = "articles_" | append: lang -%}
-{%- if tags contains article_tag %}
+{%- if tags contains article_tag and not site.dev %}
   <script src="https://giscus.app/client.js"
           id="comments"
           data-repo="jcubic/jankiewicz"
