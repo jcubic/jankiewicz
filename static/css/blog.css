@@ -1,5 +1,6 @@
 :root {
     --color: #152032;
+    --bold: black;
     --link: #2453BF;
     --link-hover: #001E63;
     --background: #e9e9e8;
@@ -52,11 +53,13 @@ span[id] {
 }
 [data-mode="dark"], #dark_no_js:target {
     --color: #ccc;
+    --bold: white;
     --background: #1D1E22;
     --link-hover: #4C7CEB;
 }
 :root:has(#mode_dark:checked) {
     --color: #ccc;
+    --bold: white;
     --background: #1D1E22;
     --link-hover: #4C7CEB;
 }
@@ -167,8 +170,10 @@ abbr, acronym {
 }
 p code {
     color: white;
+    color: var(--bold);
     font-weight: bold;
 }
+
 /* we don't want fancy fonts */
 main code[class*="language-"],
 main pre[class*="language-"] {
