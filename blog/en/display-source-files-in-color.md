@@ -321,6 +321,26 @@ const valid_mime = mime_hack[extension] ?? mime.getType(extension);
 
 This time the code did work and I've got the JavaScript file syntax highlighted.
 
+**UPDATE 2**:
+
+It turns out that the solution I've added was not bullet proof, because
+it stopped working when my hosting fixed the issue. The problem was
+that the static files was using NGINX and it used different MIME and I was
+not able to change it using `.htaccess` file.
+
+This is the fixed version of the code that works for both MIME types:
+
+```javascript
+const alernative_mime = {
+    'application/x-javascript': 'js'
+};
+
+const fetch_mime = content_type.replace(/;.*$/, '');
+const valid_extension = mime.getExtension(fetch_mime) ?? alernative_mime[fetch_mime];
+if (extension.endsWith(valid_extension)) {
+}
+```
+
 If you find this article interesting you may want to follow me on Twitter:
 [@jcubic](https://jcu.bi/twitter) and on [LinkedIn](https://jcu.bi/ln).
 
