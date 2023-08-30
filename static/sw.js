@@ -39,21 +39,34 @@ const alernative_mime = {
     'application/x-javascript': 'js'
 };
 
+function get_theme() {
+    return new Promise((resolve, reject) => {
+        wayne.send(bs, 'theme', []).then((data) => {
+            clearTimeout(id);
+            resolve(data);
+        });
+        const id = setTimeout(() => {
+            resolve({ result: null });
+        }, 100);
+    });
+}
+
 app.get('*', async function(req, res) {
     const url = new URL(req.url);
     const extension = path.extname(url.pathname);
     const language = language_map[extension];
     const accept = req.headers.get('Accept');
     if (match_language(language) && accept.match(/text\/html/)) {
-        const [{code, content_type}, {result: theme}] = await Promise.all([
+        const [{code, content_type}, rpc_response] = await Promise.all([
             fetch(req.url).then(async res => {
                 return {
                     content_type: res.headers.get('Content-Type'),
                     code: await res.text()
                 };
             }),
-            wayne.send(bs, 'theme', [])
+            get_theme()
         ]);
+        const theme = rpc_response.result ?? 'dark';
         const fetch_mime = content_type.replace(/;.*$/, '');
         const valid_extension = mime.getExtension(fetch_mime) ?? alernative_mime[fetch_mime];
         if (extension.endsWith(valid_extension)) {
