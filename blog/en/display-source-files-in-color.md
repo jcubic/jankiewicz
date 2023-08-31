@@ -341,6 +341,57 @@ if (extension.endsWith(valid_extension)) {
 }
 ```
 
+**UPDATE 3**
+
+I've noted that when trying to load a script tag when the page was closed, it was taking a
+long time to process. After some debugging, I've figured out the problem is the RPC
+mechanism, the RPC call is never resolved because there is no main page to return the
+theme of the page.
+
+So the fix was to add timeout and return null as the result and use the default dark
+theme.
+
+This is the relevant code:
+
+The RPC call with timeout:
+
+```javascript
+function get_theme() {
+    return new Promise((resolve, reject) => {
+        wayne.send(bs, 'theme', []).then((data) => {
+            clearTimeout(id);
+            resolve(data);
+        });
+        const id = setTimeout(() => {
+            resolve({ result: null });
+        }, 100);
+    });
+}
+```
+
+async requests:
+
+```javascript
+const [{code, content_type}, rpc_response] = await Promise.all([
+    fetch(req.url).then(async res => {
+        return {
+            content_type: res.headers.get('Content-Type'),
+            code: await res.text()
+        };
+    }),
+    get_theme()
+]);
+```
+
+and line that extract the theme with fallback:
+
+```javascript
+const theme = rpc_response.result ?? 'dark';
+```
+
+This time it works even if the Service Worker is sleeping and you open
+JS or CSS file.
+
 If you find this article interesting you may want to follow me on Twitter:
 [@jcubic](https://jcu.bi/twitter) and on [LinkedIn](https://jcu.bi/ln).
 
