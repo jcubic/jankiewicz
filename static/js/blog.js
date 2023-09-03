@@ -282,7 +282,7 @@ function prefered_dark() {
         return JSON.parse(ls);
     }
     if ('matchMedia' in window) {
-        var media_query = window.matchMedia('prefers-color-scheme: dark');
+        var media_query = window.matchMedia('(prefers-color-scheme: dark)');
         return media_query.matches;
     }
     return false;

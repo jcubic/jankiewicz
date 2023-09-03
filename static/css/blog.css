@@ -326,13 +326,6 @@ ul {
 main li p {
   display: inline;
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color: white;
-        --background: black;
-    }
-}
-
 footer {
     margin-top: 2em;
     line-height: 1.5em;
