@@ -343,7 +343,7 @@ if (extension.endsWith(valid_extension)) {
 
 **UPDATE 3**
 
-I've noted that when trying to load a script tag when the page was closed, it was taking a
+I've noticed that when trying to load a script tag when the page was closed, it was taking a
 long time to process. After some debugging, I've figured out the problem is the RPC
 mechanism, the RPC call is never resolved because there is no main page to return the
 theme of the page.
