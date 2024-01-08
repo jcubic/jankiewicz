@@ -36,6 +36,21 @@ h3 a::before {
     color: var(--color);
     background: var(--background);
 }
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: var(--background);
+  color: var(--color);
+  opacity: 0;
+}
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
 main header h1, main h2, main h3 {
     font-size: inherit;
     display: inline-block;

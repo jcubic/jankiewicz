@@ -111,6 +111,7 @@
   <meta name="generator" content="{{ eleventy.generator }}">
 </head>
 <body id="dark_no_js">
+  <a href="#main" class="skip-to-content">{{ blog.skip }}</a>
   <nav class="main">
     <pre></pre>
     <div class="dark-mode radio brakets">
@@ -139,7 +140,7 @@
       <pre class="wrap" aria-hidden="true" role="presentation">{{ figlet.wrap }}</pre>
     </a>
   </header>
-  <main>
+  <main id="main">
   {{ content -}}
   </main>
   <footer>

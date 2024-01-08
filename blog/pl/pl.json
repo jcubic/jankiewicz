@@ -15,6 +15,7 @@
         "home": "Strona główna bloga",
         "description": "To jest osobisty blog Jakuba Jankiewicza",
         "source": "edytuj tą stronę",
-        "license": "Zawartość tego bloga jest udostępniona na licencji [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+        "license": "Zawartość tego bloga jest udostępniona na licencji [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)",
+        "skip": "Pomiń i przejdź do sekcji głównej"
     }
 }

@@ -13,8 +13,8 @@
   <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12351px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:0.25441" x="53.962246" y="130.70401" id="text2551"><tspan id="tspan2549" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New';fill:#dddddd;fill-opacity:1;stroke-width:0.25441" x="53.962246" y="130.70401">{{ fullname }} • {{ date }}</tspan></text>
   <image width="16.933332" height="16.933332" preserveAspectRatio="none" xlink:href="{{ path }}/avatars/{{ username }}.jpg" id="image832" x="-2.2705605" y="116.69467" clip-path="url(#clipPath940)" transform="matrix(1.3843576,0,0,1.3843576,28.726161,-44.762308)" />
   <circle style="fill:none;fill-rule:evenodd;stroke:#dddddd;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#dddddd" id="circle1050" cx="37.303799" cy="128.50574" r="11.720664" />
-  <foreignObject width="246.58748" height="75.381409" x="25.931271" y="26.328524">
-    <xhtml:div style="width: 246.58748; color: #dddddd; height: 196px; font-size:17.5478px; line-height:1.25; font-family:monospace;">
+  <foreignObject width="265" height="75.381409" x="25.931271" y="26.328524">
+    <xhtml:div style="width: 265; color: #dddddd; height: 196px; font-size:17.5478px; line-height:1.25; font-family:monospace;">
       <xhtml:p style="margin: 0">{{ title }}</xhtml:p>
     </xhtml:div>
   </foreignObject>

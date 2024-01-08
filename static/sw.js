@@ -1,6 +1,7 @@
 importScripts(
     'https://cdn.jsdelivr.net/npm/@jcubic/wayne/index.umd.min.js',
     'https://cdn.jsdelivr.net/npm/prismjs/prism.js',
+    'https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.js',
     'https://cdn.jsdelivr.net/gh/jcubic/static@master/js/mime.min.js',
     'https://cdn.jsdelivr.net/gh/jcubic/static@master/js/path.js'
 );

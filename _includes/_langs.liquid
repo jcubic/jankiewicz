@@ -8,11 +8,12 @@
 <nav class="languages">
   <ul>
     {%- for translation in translations -%}
-      {%- assign article_lang = translation.data.lang %}
+      {%- assign article = translation.data  %}
+      {%- assign article_lang = article.lang %}
       {%- if lang == translation.data.lang  -%}
-        <li class="selected">({{ article_lang }})</li>
+        <li class="selected" lang="{{ article_lang }}">({{ article_lang }})</li>
       {%- else %}
-        <li><a href="{{ translation.url }}" aria-label="{{ article.data.lang_title }}">({{ article_lang }})</a></li>
+        <li><a href="{{ translation.url }}" lang="{{ article_lang }}" title="{{ article.title }}" aria-label="{{ article.title }}">({{ article_lang }})</a></li>
       {%- endif -%}
     {%- endfor -%}
   </ul>
