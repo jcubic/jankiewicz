@@ -45,7 +45,7 @@ const COL_MARGIN = 30;
 let char = char_size();
 let cookie_consent = !!localStorage.getItem('cookie');
 const [progress] = $$('nav.main pre');
-const cookie_banner_exists = typeof cookie_banner !== 'undefined';
+const cookie_banner_exists = typeof cookie_banner !== 'undefined' && cookie_banner.clientWidth !== 0;
 if (!cookie_consent) {
     display_banner('');
 }

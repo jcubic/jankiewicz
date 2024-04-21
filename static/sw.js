@@ -1,3 +1,6 @@
+self.Prism = self.Prism || {};
+self.Prism.disableWorkerMessageHandler = true;
+
 importScripts(
     'https://cdn.jsdelivr.net/npm/@jcubic/wayne/index.umd.min.js',
     'https://cdn.jsdelivr.net/npm/prismjs/prism.js',
