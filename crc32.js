@@ -22,6 +22,6 @@ const crc32 = (str) => {
     return (crc ^ (-1)) >>> 0;
 };
 
-module.exports = (str) => {
+export default (str) => {
     return crc32(str).toString(36);
 };

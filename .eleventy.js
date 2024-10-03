@@ -1,15 +1,20 @@
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const embeds = require('eleventy-plugin-embed-everything');
-const markdownIt = require('markdown-it');
-const abbr = require('markdown-it-abbr');
-const { minify } = require('html-minifier-terser');
-const { encode } = require('html-entities');
-const crc32 = require('./crc32');
-const path = require('path');
-const fs = require('fs/promises');
-const fm = require('front-matter');
-const { Liquid } = require('liquidjs');
-const puppeteer = require('puppeteer');
+import { IdAttributePlugin } from '@11ty/eleventy';
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
+import embeds from 'eleventy-plugin-embed-everything';
+import markdownIt from 'markdown-it';
+import abbr from 'markdown-it-abbr';
+import { minify } from 'html-minifier-terser';
+import { encode } from 'html-entities';
+import crc32 from './crc32.js';
+import path from 'path';
+import fs from 'fs/promises';
+import fm from 'front-matter';
+import { Liquid } from 'liquidjs';
+import puppeteer from 'puppeteer';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const liquid = new Liquid();
 
@@ -45,7 +50,9 @@ function filter_tags(collectionApi, filter_callback) {
     }, []);
 }
 
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
+    eleventyConfig.addPlugin(IdAttributePlugin);
+
     const options = {
         html: true,
         linkify: true

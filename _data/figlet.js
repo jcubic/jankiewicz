@@ -1,5 +1,6 @@
-const { promisify } = require('util');
-const figlet = promisify(require('figlet').text);
+import { promisify } from 'util';
+import __figlet__ from 'figlet';
+const figlet = promisify(__figlet__.text);
 
 // ref: https://stackoverflow.com/a/30970751/387194
 function escape(s) {
@@ -25,7 +26,7 @@ const render = async (...args) => {
     return escape(await figlet(...args)).replace(/\s+$/gm, '');
 };
 
-module.exports = async () => {
+export default async () => {
     const text = 'Jakub T. Jankiewicz';
     return {
         wrap: await render(text, {...config, width: 90}),

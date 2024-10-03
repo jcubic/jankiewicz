@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": ".eleventy.js",
+  "type": "module",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"
