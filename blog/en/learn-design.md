@@ -47,6 +47,6 @@ This book is also on my list of books to read. Right now you can buy 4th edition
 The last on the list is a free e-book, you need to add your personal details to download.
 
 ## [Summary](#summary)
-I strongly believe that every web developer should learn basics for design, especially if he or she does anything front-end related. Even if that would be really basic. Knowledge about design can be invaluable, especially if you're a new developer, and want to create projects for your portfolio that will stand out. It's always better to show something that looks good.
+I strongly believe that every web developer should learn basics of design, especially if he or she does anything front-end related. Even if that would be really basic. Knowledge about design can be invaluable, especially if you're a new developer, and want to create projects for your portfolio that will stand out. It's always better to show something that looks good.
 
 {% include "_abbr" %}
