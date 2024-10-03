@@ -273,7 +273,7 @@ main ul {
     padding: 0;
     line-height: 1.5em;
 }
-main > ul {
+main > ul, main img {
     padding-inline-start: 0.3em;
 }
 main ul li::before {
