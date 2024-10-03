@@ -1,6 +1,6 @@
 ---
 title: How to Learn Design as a Web Developer
-description: This is my first entry in jakub.jankiewicz.org blog
+description: In this article, I will show you 4 resources which will help you learn design as a web developer.
 date: 2024-10-03
 author: jcubic
 tags: articles_en
