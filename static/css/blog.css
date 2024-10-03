@@ -273,7 +273,7 @@ main ul {
     padding: 0;
     line-height: 1.5em;
 }
-main li::before {
+main ul li::before {
     content: "*";
     position: relative;
     z-index: -1;
