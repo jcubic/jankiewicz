@@ -18,7 +18,6 @@ I decided to create this blog mostly to grow my personal brand and to improve
 SEO of my content for my name. In Polish Google it's occupied mostly by actor
 with same name.
 
-<span id="list-of-articles"></span>
 ## [List of Articles](#list-of-articles)
 
 {% for page in collections.articles_en %}
