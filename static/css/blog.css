@@ -274,7 +274,14 @@ main ul {
     line-height: 1.5em;
 }
 main > ul, main img {
-    padding-inline-start: 0.3em;
+    padding-inline-start: 0.4em;
+}
+main a:has(img) {
+    display: inline-block;
+}
+main a img {
+    padding: 0.4em;
+    display: block;
 }
 main ul li::before {
     content: "*";
