@@ -16,7 +16,7 @@ developer.
 <!-- more -->
 {%- card -%}
 
-So to the point, here is a list of 4 resources where you can learn web design.
+So to the point, here is a list of resources where you can learn web design.
 
 1. [Design for Hackers](https://www.amazon.com/Design-Hackers-Reverse-Engineering-Beauty/dp/1119998956) by David Kadavy
 
