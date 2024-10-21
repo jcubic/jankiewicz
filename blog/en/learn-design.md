@@ -10,7 +10,7 @@ People often ask me how to learn design. And since I'm mostly web developer, I g
 question mostly from web developers. I decided to write this blog post to redirect people
 that ask this question.
 
-In this article, I will show you 5 resources which will help you learn design as a web
+In this article, I will show you 6 resources which will help you learn design as a web
 developer.
 
 <!-- more -->
@@ -51,7 +51,13 @@ This is a free e-book, you need to add your personal details to download.
 
 [![Visual design or developers](/img/visual-design-video.jpg)](https://www.youtube.com/watch?v=YNOwO5s4AL8)
 
-The last resource is a relatively short Video on YouTube about basics of Design.
+It's a relatively short Video on YouTube about basics of Design.
+
+6. [How to Make Your Website Not Ugly: Basic UX for Programmers](https://www.youtube.com/watch?v=Jf0cjocP8Wk) by Hilary Stohs-Krause
+
+[![How to Make Your Website Not Ugly: Basic UX for Programmers](/img/website-not-ugly.jpg)](https://www.youtube.com/watch?v=Jf0cjocP8Wk)
+
+Another bit longer video which is more about UX, but still shows a bit about how to improve web design and bit about Accessibility.
 
 ## [Summary](#summary)
 
